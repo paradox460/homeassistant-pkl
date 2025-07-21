@@ -1,0 +1,31 @@
+#!/usr/bin/env fish
+#MISE description="Bumps the version"
+#MISE tools=['cargo:sd', 'pkl']
+set pklproject $MISE_PROJECT_ROOT/PklProject
+
+set old_version (pkl eval -x package.version $pklproject)
+
+if set -q argv[1]
+  set new_version $argv[1]
+else
+  string match -rq "(?<date>(?<year>\d{4})\.(?<month>\d{,2})\.(?<day>\d{,2}))(?:\-(?<increment>\d+))?" $old_version
+  set new_date (gdate +%Y.%-m.%-d)
+
+  set -S old_version
+  set -S new_date
+  set -S date
+
+  if test "$new_date" = "$date"
+    set increment (math $increment + 1)
+    set increment "-$increment"
+  else
+    set date $new_date
+    set increment ""
+  end
+
+  set new_version "$date$increment"
+end
+
+sd '(^\s+version = \").*?$' '${1}'$new_version'"' $pklproject
+
+echo "$old_version -> $new_version"

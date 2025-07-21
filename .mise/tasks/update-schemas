@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+#MISE description="Fetches HomeAssistant schemas, compiles them, and updates PKL schemas"
+mise run update-json-schema ::: update-pkl-schema

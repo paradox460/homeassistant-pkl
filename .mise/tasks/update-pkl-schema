@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+#MISE description="Updates the PKL schema files, from the json schema files"
+#MISE wait_for=["update-json-schema"]
+#MISE sources=["priv/schemas/json/*.json"]
+#MISE outputs=["type/*.pkl"]
+mkdir type
+for f in (find priv/schemas/json -type f -name "*.json")
+  mise exec -- pkl eval package://pkg.pkl-lang.org/pkl-pantry/org.json_schema.contrib@1.1.0#/generate.pkl -m type -p source="$f"
+end

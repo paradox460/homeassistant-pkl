@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+#MISE description="Updates the JSON schema files"
+#MISE requires="jq"
+#MISE env={MISE_IDIOMATIC_VERSION_FILE_ENABLE_TOOLS = "node"}
+git clone --depth 1 https://github.com/keesschollaart81/vscode-home-assistant.git /tmp/vscode-home-assistant
+cd /tmp/vscode-home-assistant
+mise exec -- npm install
+mise exec -- npm run schema
+cd $MISE_CONFIG_ROOT
+mkdir -p priv/schemas/json
+cp /tmp/vscode-home-assistant/src/language-service/src/schemas/json/*.json priv/schemas/json/
+rm -rf /tmp/vscode-home-assistant

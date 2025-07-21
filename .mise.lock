@@ -1,0 +1,7 @@
+[tools.jq]
+version = "1.8.1"
+backend = "aqua:jqlang/jq"
+
+[tools.pkl]
+version = "0.28.2"
+backend = "aqua:apple/pkl"
