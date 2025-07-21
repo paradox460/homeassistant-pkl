@@ -1,0 +1,3431 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/lovelace-cards.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module LovelaceCards
+
+class Schema {
+  /// The Alarm Panel card allows you to Arm and Disarm your alarm control panel integrations.
+  /// https://www.home-assistant.io/lovelace/alarm-panel/
+  type: "alarm-panel"
+
+  /// Entity ID of alarm_control_panel domain https://www.home-assistant.io/lovelace/alarm-panel/#entity
+  entity: String(matches(Regex(#"^alarm_control_panel\..*$"#)))
+
+  /// Overwrites Friendly Name. https://www.home-assistant.io/lovelace/alarm-panel/#name
+  name: String?
+
+  /// Controls which states to have available. https://www.home-assistant.io/lovelace/alarm-panel/#states
+  states: Listing<States>?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/alarm-panel/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class ViewLayout {
+  /// Defines the position of the card in an sidebar view.
+  /// https://www.home-assistant.io/lovelace/sidebar/#view_layoutposition
+  position: ("main"|"sidebar")?
+}
+
+/// Lovelace Area Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/hui-area-card.ts -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/types.ts
+class Schema1 {
+  /// The Area card lets you control and monitor an individual area.
+  /// https://www.home-assistant.io/lovelace/area/
+  type: "area"
+
+  /// The ID of the area to show. https://www.home-assistant.io/lovelace/area/#area
+  area: String
+
+  /// Link to Lovelace view. https://www.home-assistant.io/lovelace/area/#navigation_path
+  navigation_path: String?
+
+  /// Changes the area picture to a live feed of the camera set for the area.
+  /// https://www.home-assistant.io/lovelace/area/#show_camera
+  show_camera: Boolean?
+
+  /// Override the used theme for this card with any loaded theme.
+  /// https://www.home-assistant.io/lovelace/area/#theme
+  theme: String?
+}
+
+class Schema2 {
+  /// The Alarm Panel card allows you to Arm and Disarm your alarm control panel integrations.
+  /// https://www.home-assistant.io/lovelace/button/
+  type: "button"
+
+  /// The action taken on card double-tap.
+  /// https://www.home-assistant.io/lovelace/button/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The entity ID the card interacts with, for example, light.living_room.
+  /// https://www.home-assistant.io/lovelace/button/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))?
+
+  /// The action taken on card tap and hold. https://www.home-assistant.io/lovelace/button/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The height of the icon. Any CSS value may be used.
+  /// https://www.home-assistant.io/lovelace/button/#icon_height
+  icon_height: String?
+
+  /// The icon that is displayed on the card. It defaults to the entity domain icon only if the card
+  /// interacts with an entity. Otherwise, if not configured, no icon is displayed.
+  /// https://www.home-assistant.io/lovelace/button/#icon
+  icon: String?
+
+  /// The button name that is displayed on the card. It defaults to the entity name only if the card
+  /// interacts with an entity. Otherwise, if not configured, no name is displayed.
+  /// https://www.home-assistant.io/lovelace/button/#name
+  name: String?
+
+  /// If false, the icon is not shown on the card.
+  /// https://www.home-assistant.io/lovelace/button/#show_icon
+  show_icon: Boolean?
+
+  /// If false, the button name is not shown on the card.
+  /// https://www.home-assistant.io/lovelace/button/#show_name
+  show_name: Boolean?
+
+  /// If false, the button state is not shown on the card.
+  /// https://www.home-assistant.io/lovelace/button/#show_state
+  show_state: Boolean?
+
+  /// If false, the icon does not change color when the entity is active.
+  /// https://www.home-assistant.io/lovelace/button/#state_color
+  state_color: Boolean?
+
+  /// The action taken on card tap. https://www.home-assistant.io/lovelace/button/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The card theme, which may be set to any theme from the themes.yaml file.
+  /// https://www.home-assistant.io/lovelace/button/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class CallServiceAction {
+  /// Legacy syntax. Use "perform-action" instead. https://www.home-assistant.io/lovelace/actions/
+  action: "call-service"
+
+  /// Legacy syntax. Use "perform_action" instead.
+  /// https://www.home-assistant.io/lovelace/actions/#perform_action
+  service: Listing<Any>?
+}
+
+class CustomAction {
+  action: "fire-dom-event"
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class Confirmation {
+  /// List of exemption objects. https://www.home-assistant.io/lovelace/actions/#exemptions
+  exemptions: Listing<UserExemption>?
+
+  /// Text to present in the confirmation dialog. https://www.home-assistant.io/lovelace/actions/#text
+  text: String?
+}
+
+class UserExemption {
+  /// User id that can see the view tab. For each user´s id listed, the confirmation dialog will NOT be
+  /// shown. https://www.home-assistant.io/lovelace/actions/#user
+  user: String
+}
+
+class MoreInfoAction {
+  /// Action to trigger the more info dialog of this entity.
+  /// https://www.home-assistant.io/lovelace/actions/
+  action: "more-info"
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class NavigateAction {
+  /// Action to navigate to an another view. https://www.home-assistant.io/lovelace/actions/
+  action: "navigate"
+
+  /// Path to navigate to (e.g., /lovelace/0/) when action defined as navigate
+  /// https://www.home-assistant.io/lovelace/actions/#navigation_path
+  navigation_path: String
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class NoneAction {
+  /// Action to do nothing. https://www.home-assistant.io/lovelace/actions/
+  action: "none"
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class PerformActionAction {
+  /// Perform an Home Assistant action. https://www.home-assistant.io/lovelace/actions/
+  action: "perform-action"
+
+  /// Legacy syntax. Use "perform_action" instead.
+  /// https://www.home-assistant.io/lovelace/actions/#service
+  service: Listing<Any>?
+
+  /// Action to perform (e.g., media_player.media_play_pause)
+  /// https://www.home-assistant.io/lovelace/actions/#perform_action
+  perform_action: String?
+
+  /// Legacy syntax. Use "data" instead. https://www.home-assistant.io/lovelace/actions/#data
+  service_data: Listing<Any>?
+
+  /// Service data to include (e.g., entity_id: media_player.bedroom).
+  /// https://www.home-assistant.io/lovelace/actions/#data
+  data: ServiceData?
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: (Confirmation|Boolean)?
+
+  /// Defines the target (area(s), device(s) and entitie(s)) to perform this action on.
+  /// https://www.home-assistant.io/lovelace/actions/#target
+  target: Target?
+}
+
+/// Defines the target (area(s), device(s) and entitie(s)) to perform this action on.
+/// https://www.home-assistant.io/lovelace/actions/#target
+class Target {
+  /// The entity (or entities) to perform this action on.
+  /// https://www.home-assistant.io/docs/scripts/perform-actions/
+  entity_id: (String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>|"all"|"none"|Any)?
+
+  /// The device (or devices) to perform this action on.
+  /// https://www.home-assistant.io/docs/scripts/perform-actions/
+  device_id: (Listing<String>|String)?
+
+  /// The area (or areas) to perform this action on.
+  /// https://www.home-assistant.io/docs/scripts/perform-actions/
+  area_id: (Listing<String>|String)?
+
+  /// The floor (or floors) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/perform-actions/
+  floor_id: (Listing<String>|String)?
+
+  /// The labels (or labels) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/perform-actions/
+  label_id: (Listing<String>|String)?
+}
+
+/// WARN: both properties and at least one of additionalProperties and patternProperties are set. This is
+/// ambiguously defined; can either be defined as a `Mapping` or a class.
+class ServiceData {
+  /// Entity ID to target this service call at.
+  /// https://www.home-assistant.io/lovelace/actions/#service_data
+  entity_id: (String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>)?
+}
+
+class ToggleAction {
+  /// Action to toggle the entity state. https://www.home-assistant.io/lovelace/actions/
+  action: "toggle"
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class URLAction {
+  /// Action to navigate to an another URL. https://www.home-assistant.io/lovelace/actions/
+  action: "url"
+
+  /// Path to navigate to (e.g., /lovelace/0/) when action defined as navigate
+  /// https://www.home-assistant.io/lovelace/actions/#url_path
+  url_path: String
+
+  /// Present a confirmation dialog to confirm the action. See confirmation object below
+  /// https://www.home-assistant.io/lovelace/actions/#confirmation
+  confirmation: Confirmation?
+}
+
+class Schema3 {
+  /// The Calendar card displays your calendar entities in a month, day and list view.
+  /// https://www.home-assistant.io/lovelace/calendar/
+  type: "calendar"
+
+  /// A list of calendar entities that will be displayed in the card.
+  /// https://www.home-assistant.io/lovelace/calendar/#entities
+  entities: Listing<String(matches(Regex(#"^.*\..*$"#)))>?
+
+  /// The view that will show first when the card is loaded onto the page.
+  /// https://www.home-assistant.io/lovelace/calendar/#initial_view
+  initial_view: ("dayGridDay"|"dayGridMonth"|"dayGridWeek"|"listWeek")?
+
+  /// The card theme, which may be set to any theme from the themes.yaml file.
+  /// https://www.home-assistant.io/lovelace/calendar/#theme
+  theme: String?
+
+  /// The title of the card. https://www.home-assistant.io/lovelace/calendar/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema4 {
+  /// The Conditional card displays another card based on entity states.
+  /// https://www.home-assistant.io/lovelace/conditional/
+  type: "conditional"
+
+  /// Card to display if all conditions match. https://www.home-assistant.io/lovelace/conditional/#card
+  card: Card
+
+  /// List of entity IDs and matching states.
+  /// https://www.home-assistant.io/lovelace/conditional/#conditions
+  conditions: Listing<Condition>
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema5 {
+  type: String(matches(Regex("custom:(.*)$")))
+}
+
+/// Lovelace Carbon consumed gauge Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-solar-consumed-gauge-card.ts
+class Schema6 {
+  /// The carbon consumed gauge card represents how much of the energy consumed by your home was
+  /// generated using non-fossil fuels like solar, wind and nuclear.
+  /// https://www.home-assistant.io/lovelace/energy/#carbon-consumed-gauge
+  type: "energy-carbon-consumed-gauge"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Energy Date Picker Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-date-selection-card.ts
+class Schema7 {
+  /// This card will allow you to pick what date to show.
+  /// https://www.home-assistant.io/lovelace/energy/#energy-date-picker
+  type: "energy-date-selection"
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Devices energy graph Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-devices-graph-card.ts
+class Schema8 {
+  /// The devices energy graph show the energy usage per device, it is sorted by usage.
+  /// https://www.home-assistant.io/lovelace/energy/#devices-energy-graph
+  type: "energy-devices-graph"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Energy distribution Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-distribution-card.ts
+class Schema9 {
+  /// The energy distribution card shows how the energy flowed, from the grid to your house, from your
+  /// solar panels to your house and/or back to the grid.
+  /// https://www.home-assistant.io/lovelace/energy/#energy-distribution
+  type: "energy-distribution"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Gas graph Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-gas-graph-card.ts
+class Schema10 {
+  /// The gas consumption graph card shows the amount of gas consumed per source.
+  /// https://www.home-assistant.io/lovelace/energy/#gas-consumption-graph
+  type: "energy-gas-graph"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Grid neutrality gauge Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-grid-neutrality-gauge-card.ts
+class Schema11 {
+  /// The grid neutrality gauge card represents your energy dependency.
+  /// https://www.home-assistant.io/lovelace/energy/#grid-neutrality-gauge
+  type: "energy-grid-neutrality-gauge"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Solar consumed gauge Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-solar-consumed-gauge-card.ts
+class Schema12 {
+  /// The solar consumed gauge represents how much of the solar energy was not used by your home and was
+  /// returned to the grid. https://www.home-assistant.io/lovelace/energy/#solar-consumed-gauge
+  type: "energy-grid-neutrality-gauge"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Solar production graph Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-solar-graph-card.ts
+class Schema13 {
+  /// The solar production graph card shows the amount of energy your solar panels have produced per
+  /// source, and if setup and available the forecast of the solar production.
+  /// https://www.home-assistant.io/lovelace/energy/#solar-production-graph
+  type: "energy-solar-graph"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Energy sources table Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-sources-table-card.ts
+class Schema14 {
+  /// The energy sources table card shows all your energy sources, and the corresponding amount of
+  /// energy. https://www.home-assistant.io/lovelace/energy/#energy-sources-table
+  type: "energy-sources-table"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Energy usage graph Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/energy/hui-energy-usage-graph-card.ts
+class Schema15 {
+  /// The energy usage graph card shows the amount of energy your house has consumed, and from what
+  /// source this energy came. https://www.home-assistant.io/lovelace/energy/#energy-usage-graph
+  type: "energy-usage-graph"
+
+  /// The card title.
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema16 {
+  /// The Entities card is the most common type of card. It groups items together into lists.
+  /// https://www.home-assistant.io/lovelace/entities/
+  type: "entities"
+
+  /// A list of entity IDs or entity (row) objects.
+  /// https://www.home-assistant.io/lovelace/entities/#entities
+  entities: Listing<Entity>?
+
+  /// Header widget to render. https://www.home-assistant.io/lovelace/header-footer/
+  footer: (ButtonsHeaderFooter|GraphHeaderFooter|PictureHeaderFooter)?
+
+  /// Footer widget to render. https://www.home-assistant.io/lovelace/header-footer/
+  header: (ButtonsHeaderFooter|GraphHeaderFooter|PictureHeaderFooter)?
+
+  /// An icon to display to the left of the title. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Button to turn on/off all entities.
+  /// https://www.home-assistant.io/lovelace/entities/#show_header_toggle
+  show_header_toggle: Boolean?
+
+  /// Set to true to have icons colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/entities/#state_color
+  state_color: Boolean?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/entities/#theme
+  theme: String?
+
+  /// The card title. https://www.home-assistant.io/lovelace/entities/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class AttributeRow {
+  /// A row that shows the attribute value of an entity.
+  /// https://www.home-assistant.io/lovelace/entities/#attribute
+  type: "attribute"
+
+  /// Attribute to display from the entity. https://www.home-assistant.io/lovelace/entities/#attribute
+  attribute: String
+
+  /// Icon to display for the row. Defaults to the icon of the entity.
+  /// https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Text before entity state. https://www.home-assistant.io/lovelace/entities/#prefix
+  prefix: String?
+
+  /// Text after entity state. https://www.home-assistant.io/lovelace/entities/#suffix
+  suffix: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class ButtonRow {
+  /// Row that shows a button. https://www.home-assistant.io/lovelace/entities/#button
+  type: "button"
+
+  /// Button label. https://www.home-assistant.io/lovelace/entities/#action_name
+  action_name: String?
+
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/entities/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/entities/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/entities/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class ButtonsRow {
+  /// Row that shows multiple buttons https://www.home-assistant.io/lovelace/entities/#buttons
+  type: "buttons"
+
+  /// A list of entities to show. Each entry is either an entity ID or a map.
+  /// https://www.home-assistant.io/lovelace/entities/#entities
+  entities: Listing<ButtonEntityRow>
+}
+
+class ButtonEntityRow {
+  /// If false, the icon is not shown. https://www.home-assistant.io/lovelace/entities/#show_icon
+  show_icon: Boolean?
+
+  /// If false, the button name is not shown. https://www.home-assistant.io/lovelace/entities/#show_name
+  show_name: Boolean?
+
+  /// Button label. (Only applies to script and scene rows)
+  /// https://www.home-assistant.io/lovelace/entities/#action_name
+  action_name: String?
+
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/entities/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// How the state should be formatted. Currently only used for timestamp sensors. Valid values are:
+  /// relative, total, date, time and datetime. https://www.home-assistant.io/lovelace/entities/#format
+  format: ("date"|"datetime"|"relative"|"time"|"total")?
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/entities/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Show additional info. Values: entity-id, last-changed, last-updated, last-triggered (only for
+  /// automations and scripts), position or tilt-position (only for supported covers), brightness (only
+  /// for lights). https://www.home-assistant.io/lovelace/entities/#secondary_info
+  secondary_info: ("brightness"|"entity-id"|"last-changed"|"last-triggered"|"last-updated"|"position"|"tilt-position")?
+
+  /// Set to true to have icons colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/entities/#state_color
+  state_color: Boolean?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/entities/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class CallServiceRow {
+  /// Row that can do a service call. https://www.home-assistant.io/lovelace/entities/#action_name
+  type: "call-service"
+
+  /// Home Assistant service to call. https://www.home-assistant.io/lovelace/entities/#action_name
+  service: String
+
+  /// Service data to include. Note: Has been replaced by "data".
+  /// https://www.home-assistant.io/lovelace/entities/#data
+  service_data: Style?
+
+  /// Data to pass into the service call. https://www.home-assistant.io/lovelace/entities/#data
+  data: Style?
+
+  /// Button label. https://www.home-assistant.io/lovelace/entities/#action_name
+  action_name: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class CastRow {
+  /// Special row to start Home Assistant Cast. https://www.home-assistant.io/lovelace/entities/#cast
+  type: "cast"
+
+  /// Path to the dashboard of the view that needs to be shown.
+  /// https://www.home-assistant.io/lovelace/entities/#dashboard
+  dashboard: String?
+
+  /// Hide this row if casting is not available in the browser.
+  /// https://www.home-assistant.io/lovelace/entities/#hide_if_unavailable
+  hide_if_unavailable: Boolean?
+
+  /// Icon to use. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Name to show in the row. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Path to the view that needs to be shown. https://www.home-assistant.io/lovelace/entities/#view
+  view: String|Number
+}
+
+class ConditionalRow {
+  /// Special row that displays based on entity states.
+  /// https://www.home-assistant.io/lovelace/entities/#conditional
+  type: "conditional"
+
+  /// List of entity IDs and matching states. https://www.home-assistant.io/lovelace/entities/#conditions
+  conditions: Listing<Condition>
+
+  /// Row to display if all conditions match. https://www.home-assistant.io/lovelace/entities/#row
+  row: Row
+}
+
+class Condition {
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/conditional/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Entity state is equal to this value. https://www.home-assistant.io/lovelace/conditional/#state
+  state: String?
+
+  /// Entity state is unequal to this value.
+  /// https://www.home-assistant.io/lovelace/conditional/#state_not
+  state_not: String?
+}
+
+class CustomRow {
+  /// This is a custom row.
+  type: String(matches(Regex("custom:(.*)$")))
+}
+
+class DividerRow {
+  /// Shows a divider row on the card. https://www.home-assistant.io/lovelace/entities/#divider
+  type: "divider"
+
+  /// Style the element using CSS. https://www.home-assistant.io/lovelace/entities/#style
+  style: Mapping<String, Any>?
+}
+
+class EntityRow {
+  /// Button label. (Only applies to script and scene rows)
+  /// https://www.home-assistant.io/lovelace/entities/#action_name
+  action_name: String?
+
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/entities/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// How the state should be formatted. Currently only used for timestamp sensors. Valid values are:
+  /// relative, total, date, time and datetime. https://www.home-assistant.io/lovelace/entities/#format
+  format: ("date"|"datetime"|"relative"|"time"|"total")?
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/entities/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Show additional info. Values: entity-id, last-changed, last-updated, last-triggered (only for
+  /// automations and scripts), position or tilt-position (only for supported covers), brightness (only
+  /// for lights). https://www.home-assistant.io/lovelace/entities/#secondary_info
+  secondary_info: ("brightness"|"entity-id"|"last-changed"|"last-triggered"|"last-updated"|"position"|"tilt-position")?
+
+  /// Set to true to have icons colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/entities/#state_color
+  state_color: Boolean?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/entities/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class SectionRow {
+  /// Devides a card by a new section. https://www.home-assistant.io/lovelace/entities/#section
+  type: "section"
+
+  /// Section label. https://www.home-assistant.io/lovelace/entities/#label
+  label: String?
+}
+
+class TextRow {
+  /// Shows a row with a label and a text. https://www.home-assistant.io/lovelace/entities/#text
+  type: "text"
+
+  /// Name to show on the row. https://www.home-assistant.io/lovelace/entities/#name
+  name: String
+
+  /// Row icon in front of the text. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Text to show on the row. https://www.home-assistant.io/lovelace/entities/#text
+  text: String
+}
+
+class WeblinkRow {
+  /// A row that shows a clickable link to anywhere on the net.
+  /// https://www.home-assistant.io/lovelace/entities/#weblink
+  type: "weblink"
+
+  /// Link label. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Icon to display (e.g., mdi:home). https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Website URL (or internal URL e.g., /hassio/dashboard or /panel_custom_name)
+  /// https://www.home-assistant.io/lovelace/entities/#url
+  url: String
+}
+
+class ButtonsHeaderFooter {
+  /// Widget to show entities as buttons in the header or footer.
+  /// https://www.home-assistant.io/lovelace/header-footer/#buttons-header--footer
+  type: "buttons"
+
+  /// A list of entities to show. Each entry is either an entity ID or a entity configuration.
+  /// https://www.home-assistant.io/lovelace/header-footer/#entities
+  entities: Listing<Entity7>
+}
+
+class EntityConfig {
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class GraphHeaderFooter {
+  /// Widget to show an entity in the sensor domain as a graph in the header or footer.
+  /// https://www.home-assistant.io/lovelace/header-footer/#graph-header--footer
+  type: "graph"
+
+  /// Entity id of sensor domain https://www.home-assistant.io/lovelace/header-footer/#entity
+  entity: String(matches(Regex(#"^sensor\..*$"#)))
+
+  /// Detail of the graph 1 or 2, 1 equals one point/hour, 2 equals six points/hour.
+  /// https://www.home-assistant.io/lovelace/header-footer/#detail
+  detail: Number(this == 1 || this == 2)?
+
+  /// Hours to show in graph. https://www.home-assistant.io/lovelace/header-footer/#hours_to_show
+  hours_to_show: Int(isPositive)
+}
+
+class PictureHeaderFooter {
+  /// Widget to show a picture as a header or a footer. A picture can have touch actions associated with
+  /// it. https://www.home-assistant.io/lovelace/header-footer/#picture-header--footer
+  type: "picture"
+
+  /// Action to take on double tap.
+  /// https://www.home-assistant.io/lovelace/header-footer/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action to take on tap-and-hold. https://www.home-assistant.io/lovelace/header-footer/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The URL of an image. https://www.home-assistant.io/lovelace/header-footer/#image
+  image: String
+
+  /// Action take on card tap. https://www.home-assistant.io/lovelace/header-footer/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+}
+
+class Schema17 {
+  /// The Entity card gives you a quick overview of your entity’s state.
+  /// https://www.home-assistant.io/lovelace/entity
+  type: "entity"
+
+  /// An attribute associated with the entity. https://www.home-assistant.io/lovelace/entity/#attribute
+  attribute: String?
+
+  /// Name of Entity https://www.home-assistant.io/lovelace/entity/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Footer widget to render. https://www.home-assistant.io/lovelace/entity/#footer
+  footer: (ButtonsHeaderFooter|GraphHeaderFooter|PictureHeaderFooter)?
+
+  /// Overwrites icon. https://www.home-assistant.io/lovelace/entity/#icon
+  icon: String?
+
+  /// Name of Entity. https://www.home-assistant.io/lovelace/entity/#name
+  name: String?
+
+  /// Set to true to have icon colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/entity/#state_color
+  state_color: Boolean?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/entity/#theme
+  theme: String?
+
+  /// Unit of Measurement given to the data displayed.
+  /// https://www.home-assistant.io/lovelace/entity/#unit
+  unit: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Lovelace Entity Button Card Source:
+/// https://github.com/home-assistant/frontend/edit/dev/src/panels/lovelace/cards/hui-entity-button-card.ts
+class Schema18 {
+  /// DEPRECATED. The entity-button card has been replaced by the button card.
+  /// https://www.home-assistant.io/lovelace/button/
+  type: "entity-button"(matches(Regex("DEPRECATED^")))
+}
+
+class Schema19 {
+  /// The Entity Filter card allows you to define a list of entities that you want to track only when in
+  /// a certain state. https://www.home-assistant.io/lovelace/entity-filter/
+  type: "entity-filter"
+
+  /// Extra options to pass down to the card rendering the result.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#card
+  card: Card
+
+  /// A list of entity IDs or entity objects, see below.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#entities
+  entities: Listing<Entity2>
+
+  /// Allows hiding of card when no entities returned by filter.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#show_empty
+  show_empty: Boolean?
+
+  /// List of strings representing states or filter objects.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#state_filter
+  state_filter: Listing<StateFilter>
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class EntityFilterEntityConfig {
+  /// List of strings representing states or filter objects.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#state_filter
+  state_filter: Listing<StateFilter>?
+
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class StateFilterConfig {
+  /// Attribute of the entity to use instead of the state.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#attribute
+  attribute: String?
+
+  /// String representing the state. https://www.home-assistant.io/lovelace/entity-filter/#value
+  value: String
+
+  /// Operator to use in the comparison. Can be ==, <=, <, >=, >, !=, in, not in, or regex.
+  /// https://www.home-assistant.io/lovelace/entity-filter/#operator
+  operator: ("!="|"<"|"<="|"=="|">"|">="|"in"|"not in"|"regex")?
+}
+
+class Schema20 {
+  /// The Gauge card is a basic card that allows visually seeing sensor data.
+  /// https://www.home-assistant.io/lovelace/gauge/
+  type: "gauge"
+
+  /// Entity id to show. https://www.home-assistant.io/lovelace/gauge/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Maximum value for graph. https://www.home-assistant.io/lovelace/gauge/#max
+  max: Number?
+
+  /// Minimum value for graph. https://www.home-assistant.io/lovelace/gauge/#min
+  min: Number?
+
+  /// Name of Gauge Entity. https://www.home-assistant.io/lovelace/gauge/#name
+  name: String?
+
+  /// Show the gauge as a needle gauge. https://www.home-assistant.io/lovelace/gauge/#needle
+  needle: Boolean?
+
+  /// List of colors and their corresponding start values. Segments will override the severity settings.
+  /// https://www.home-assistant.io/dashboards/gauge/#segments
+  segments: Listing<Segment>?
+
+  /// Allows setting of colors for different numbers.
+  /// https://www.home-assistant.io/lovelace/gauge/#severity
+  severity: Severity?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/gauge/#theme
+  theme: String?
+
+  /// Unit of Measurement given to data. https://www.home-assistant.io/lovelace/gauge/#unit
+  unit: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Segment {
+  /// Value from which to start the color. https://www.home-assistant.io/dashboards/gauge/#from
+  from: Number
+
+  /// Value from which to start red color. https://www.home-assistant.io/dashboards/gauge/#red
+  color: String
+}
+
+class Severity {
+  /// Value from which to start green color. https://www.home-assistant.io/lovelace/gauge/#green
+  green: Number?
+
+  /// Value from which to start red color. https://www.home-assistant.io/lovelace/gauge/#red
+  red: Number?
+
+  /// Value from which to start yellow color. https://www.home-assistant.io/lovelace/gauge/#yellow
+  yellow: Number?
+}
+
+class Schema21 {
+  /// The Glance card is useful to group multiple sensors in a compact overview.
+  /// https://www.home-assistant.io/lovelace/glance/
+  type: "glance"
+
+  /// Number of columns to show. If not specified the number will be set automatically.
+  /// https://www.home-assistant.io/lovelace/glance/#columns
+  columns: Int(isPositive)?
+
+  /// A list of entity IDs or entity objects. https://www.home-assistant.io/lovelace/glance/#entities
+  entities: Listing<Entity3>?
+
+  /// Show entity icon. https://www.home-assistant.io/lovelace/glance/#show_icon
+  show_icon: Boolean?
+
+  /// Show entity name. https://www.home-assistant.io/lovelace/glance/#show_name
+  show_name: Boolean?
+
+  /// Show entity state-text. https://www.home-assistant.io/lovelace/glance/#show_state
+  show_state: Boolean?
+
+  /// Set to true to have icons colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/glance/#state_color
+  state_color: Boolean?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/glance/#theme
+  theme: String?
+
+  /// Card title. https://www.home-assistant.io/lovelace/glance/#theme
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class GlanceEntityConfig {
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/glance/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/glance/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/glance/#image
+  image: String?
+
+  /// Overwrites the state display with the relative time since last changed.
+  /// https://www.home-assistant.io/lovelace/glance/#show_last_changed
+  show_last_changed: Boolean?
+
+  /// Show entity state-text. https://www.home-assistant.io/lovelace/glance/#show_state
+  show_state: Boolean?
+
+  /// Set to true to have icons colored when entity is active.
+  /// https://www.home-assistant.io/lovelace/glance/#state_color
+  state_color: Boolean?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/glance/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+}
+
+class Schema22 {
+  /// The Grid card allows you to show multiple cards in a grid. It will first fill the columns,
+  /// automatically adding new rows as needed. https://www.home-assistant.io/lovelace/grid/
+  type: "grid"
+
+  /// List of cards. https://www.home-assistant.io/lovelace/grid/#cards
+  cards: Listing<Card>
+
+  /// Number of columns in the grid. https://www.home-assistant.io/lovelace/grid/#columns
+  columns: Int(isPositive)?
+
+  /// Should the cards be shown square. https://www.home-assistant.io/lovelace/grid/#square
+  square: Boolean?
+
+  /// Title of Grid. https://www.home-assistant.io/lovelace/grid/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema23 {
+  /// The History Graph card allows you to display a graph for each of the entities listed.
+  /// https://www.home-assistant.io/lovelace/history-graph/
+  type: "history-graph"
+
+  /// A list of entity IDs or entity objects.
+  /// https://www.home-assistant.io/lovelace/history-graph/#entities
+  entities: Listing<Entity7>?
+
+  /// Hours to show. Minimum is 1 hour, maximum of 80 hours.
+  /// https://www.home-assistant.io/lovelace/history-graph/#hours_to_show
+  hours_to_show: Int(isPositive)?
+
+  /// Refresh interval in seconds. https://www.home-assistant.io/lovelace/history-graph/#refresh_interval
+  refresh_interval: Int(isPositive)?
+
+  /// The card title. https://www.home-assistant.io/lovelace/history-graph/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema24 {
+  /// The Horizontal Stack card allows you to stack together multiple cards, so they always sit next to
+  /// each other in the space of one column https://www.home-assistant.io/lovelace/horizontal-stack/
+  type: "horizontal-stack"
+
+  /// List of cards. https://www.home-assistant.io/lovelace/horizontal-stack/#cards
+  cards: Listing<Card>
+
+  /// Title of Stack. https://www.home-assistant.io/lovelace/horizontal-stack/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema25 {
+  /// The Humidifier card lets you control and monitor humidifiers, dehumidifiers, and hygrostat devices.
+  /// https://www.home-assistant.io/lovelace/humidifier/
+  type: "humidifier"
+
+  /// Entity id of humidifier domain. https://www.home-assistant.io/lovelace/humidifier/#entity
+  entity: String(matches(Regex(#"^humidifier\..*$"#)))
+
+  /// Name of Entity. https://www.home-assistant.io/lovelace/humidifier/#name
+  name: String?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/humidifier/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+
+  /// A list of features to customize the card.
+  /// https://www.home-assistant.io/dashboards/humidifier/#features
+  features: Listing<Feature>?
+}
+
+class TargetHumidityFeature {
+  type: "target-humidity"
+}
+
+class HumidifierModesFeature {
+  type: "humidifier-modes"
+
+  modes: Listing<String>?
+
+  style: ("dropdown"|"icons")?
+}
+
+class HumidifierToggleFeature {
+  type: "humidifier-toggle"
+}
+
+/// Lovelace Webpage/iframe Card Sources: -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/hui-iframe-card.ts -
+/// https://github.com/home-assistant/frontend/blob/dev/src/panels/lovelace/cards/types.ts -
+/// https://github.com/home-assistant/frontend/blob/dev/src/data/lovelace.ts
+class Schema26 {
+  /// The Webpage card allows you to embed your favorite webpage right into Home Assistant.
+  /// https://www.home-assistant.io/lovelace/iframe/
+  type: "iframe"
+
+  /// Height-width-ratio. Defaults to 50%. https://www.home-assistant.io/lovelace/iframe/#aspect_ratio
+  aspect_ratio: String?
+
+  /// The card title. https://www.home-assistant.io/lovelace/iframe/#title
+  title: String?
+
+  /// Website URL. https://www.home-assistant.io/lovelace/iframe/#url
+  url: String
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema27 {
+  /// The Light card allows you to change the brightness of the light.
+  /// https://www.home-assistant.io/lovelace/light/
+  type: "light"
+
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/light/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Home Assistant Light Domain entity ID. https://www.home-assistant.io/lovelace/light/#entity
+  entity: String(matches(Regex(#"^light\..*$"#)))
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/light/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Overwrites icon. https://www.home-assistant.io/lovelace/light/#icon
+  icon: String?
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/light/#name
+  name: String?
+
+  /// The action taken on card tap. https://www.home-assistant.io/lovelace/light/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/light/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema28 {
+  /// The Logbook card displays entries from the logbook for specific entities.
+  /// https://www.home-assistant.io/lovelace/logbook/
+  type: "logbook"
+
+  /// The entities that will show in the card. https://www.home-assistant.io/lovelace/logbook/#entities
+  entities: Listing<String(matches(Regex(#"^.*\..*$"#)))>?
+
+  /// Number of hours in the past to track. https://www.home-assistant.io/lovelace/logbook/#hours_to_show
+  hours_to_show: Int(isPositive)?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/logbook/#theme
+  theme: String?
+
+  /// Title of the card. https://www.home-assistant.io/lovelace/logbook/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema29 {
+  /// The Map card that allows you to display entities on a map.
+  /// https://www.home-assistant.io/lovelace/map/
+  type: "map"
+
+  /// List of entity IDs. Either this or the geo_location_sources configuration option is required.
+  /// https://www.home-assistant.io/lovelace/map/#entities
+  entities: (String(matches(Regex(#"^.*\..*$"#)))|EntityConfig|Listing<Entity7>)?
+
+  /// List of geolocation sources. All current entities with that source will be displayed on the map.
+  /// See Geolocation platform for valid sources. Set to all to use all available sources. Either this or
+  /// the entities configuration option is required.
+  /// https://www.home-assistant.io/lovelace/map/#geo_location_sources
+  geo_location_sources: Listing<GeoLocationEntity>?
+
+  /// The card title. https://www.home-assistant.io/lovelace/map/#title
+  title: String?
+
+  /// Forces the height of the image to be a ratio of the width. You may enter a value such as: 16x9,
+  /// 16:9, 1.78. https://www.home-assistant.io/lovelace/map/#aspect_ratio
+  aspect_ratio: String?
+
+  /// The default zoom level of the map. https://www.home-assistant.io/lovelace/map/#default_zoom
+  default_zoom: Int(isPositive)?
+
+  /// Enable a dark theme for the map. https://www.home-assistant.io/lovelace/map/#dark_mode
+  dark_mode: Boolean?
+
+  /// Shows a path of previous locations. Hours to show as path on the map.
+  /// https://www.home-assistant.io/lovelace/map/#hours_to_show
+  hours_to_show: Int(isPositive)?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema30 {
+  /// The Media Control card is used to display Media Player entities on an interface with easy to use
+  /// controls. https://www.home-assistant.io/lovelace/media-control/
+  type: "markdown"
+
+  /// Content to render as Markdown. May contain templates.
+  /// https://www.home-assistant.io/lovelace/markdown/#content
+  content: String
+
+  /// The card title. https://www.home-assistant.io/lovelace/markdown/#title
+  title: String?
+
+  /// The algorithm for placing cards aesthetically in Lovelace may have problems with the Markdown card
+  /// if it contains templates. You can use this value to help it estimate the height of the card in
+  /// units of 50 pixels (approximately 3 lines of text in default size). (e.g., 4).
+  /// https://www.home-assistant.io/lovelace/markdown/#card_size
+  card_size: Int(isPositive)?
+
+  /// A list of entity IDs so a template in content: only reacts to the state changes of these entities.
+  /// This can be used if the automatic analysis fails to find all relevant entities.
+  /// https://www.home-assistant.io/lovelace/markdown/#entity_id
+  entity_id: (String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>)?
+
+  /// Set to any theme within themes.yaml.
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema31 {
+  /// The Media Control card is used to display Media Player entities on an interface with easy to use
+  /// controls. https://www.home-assistant.io/lovelace/media-control/
+  type: "media-control"
+
+  /// A media player entity_id. https://www.home-assistant.io/lovelace/media-control/#entity
+  entity: String(matches(Regex(#"^media_player\..*$"#)))
+
+  /// Overwrite friendly name. https://www.home-assistant.io/lovelace/media-control/#name
+  name: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema32 {
+  /// The Picture card allows you to set an image to use for navigation to various paths in your
+  /// interface or to call a service. https://www.home-assistant.io/lovelace/picture/
+  type: "picture"
+
+  /// Action taken on card double tap. https://www.home-assistant.io/lovelace/picture/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold. https://www.home-assistant.io/lovelace/picture/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The URL of an image. https://www.home-assistant.io/lovelace/picture/#image
+  image: String
+
+  /// The URL of an image. https://www.home-assistant.io/lovelace/picture/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/picture/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema33 {
+  /// The cards allow you to position icons or text and even services on an image based on coordinates.
+  /// Imagine floor plan, imagine picture-glance with no restrictions!
+  /// https://www.home-assistant.io/lovelace/picture-elements/
+  type: "picture-elements"
+
+  /// A camera entity. https://www.home-assistant.io/lovelace/picture-elements/#camer_image
+  camera_image: String(matches(Regex(#"^camera\..*$"#)))?
+
+  /// “live” will show the live view if stream is enabled.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#camera_view
+  camera_view: ("auto"|"live")?
+
+  /// This CSS filter is used when the dark mode is activated.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#dark_mode_filter
+  dark_mode_filter: String?
+
+  /// This image is used when the dark mode is activated and no state image is set.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#dark_mode_image
+  dark_mode_image: String?
+
+  /// List of elements. https://www.home-assistant.io/lovelace/picture-elements/#elements
+  elements: Listing<Element>
+
+  /// The URL of an image. https://www.home-assistant.io/lovelace/picture-elements/#image
+  image: String
+
+  /// State-based CSS filters. https://www.home-assistant.io/lovelace/picture-elements/#state_filter
+  state_filter: Mapping<String, String>?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/picture-elements/#theme
+  theme: String?
+
+  /// Card title. https://www.home-assistant.io/lovelace/picture-elements/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class ConditionalElement {
+  /// Much like the Conditional card, this element will let you show its sub-elements based on entity
+  /// states. https://www.home-assistant.io/lovelace/picture-elements/#conditional-element
+  type: "conditional"
+
+  /// List of entity IDs and matching states.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#conditions
+  conditions: Listing<Condition>
+
+  /// One or more elements of any type to show when conditions are met.
+  elements: Listing<Element>
+}
+
+class CustomElement {
+  /// This is a custom element.
+  type: String(matches(Regex("custom:(.*)$")))
+}
+
+class IconElement {
+  /// This element creates a static icon that is not linked to the state of an entity.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#icon-element
+  type: "icon"
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Entity to use for more-info/toggle. https://www.home-assistant.io/lovelace/picture-elements/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))?
+
+  /// Action taken on card tap and hold..
+  /// https://www.home-assistant.io/lovelace/picture-elements/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Icon to display (e.g., mdi:home). https://www.home-assistant.io/lovelace/picture-elements/#icon
+  icon: String
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-elements/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+}
+
+class ImageElement {
+  /// This creates an image element that overlays the background image.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#image-element
+  type: "image"
+
+  /// Height-width-ratio. Defaults to 50%.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#aspect_ratio
+  aspect_ratio: String?
+
+  /// A camera entity. https://www.home-assistant.io/lovelace/picture-elements/#camera_image
+  camera_image: String(matches(Regex(#"^camera\..*$"#)))?
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Entity to use for state_image and state_filter and also target for actions.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))?
+
+  /// Default CSS filter. https://www.home-assistant.io/lovelace/picture-elements/#filter
+  filter: String?
+
+  /// Action taken on card tap and hold.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// The image to display. https://www.home-assistant.io/lovelace/picture-elements/#image
+  image: String?
+
+  /// State-based CSS filters.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#how-to-use-state_filter
+  state_filter: Mapping<String, String>?
+
+  /// Specify a different image to display based on the state of the entity.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#how-to-use-state_image
+  state_image: Mapping<String, String>?
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-elements/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+}
+
+class ServiceButtonElement {
+  /// This entity creates a button (with arbitrary text) that can be used to call a service.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#service-call-button
+  type: "service-button"
+
+  /// The Home Assistant service to call.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#service
+  service: String
+
+  /// The service data to pass into the service call.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#service_data
+  service_data: Style?
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Button label. https://www.home-assistant.io/lovelace/picture-elements/#title
+  title: String
+}
+
+class StateBadgeElement {
+  /// This element creates a badge representing the state of an entity.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#state-badge
+  type: "state-badge"
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Entity id. https://www.home-assistant.io/lovelace/picture-elements/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Action taken on card tap and hold..
+  /// https://www.home-assistant.io/lovelace/picture-elements/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-elements/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// State badge tooltip. Set to null to hide.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#title
+  title: String?
+}
+
+class StateIconElement {
+  /// This element represents an entity state using an icon.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#state-icon
+  type: "state-icon"
+
+  /// The entity id to use. https://www.home-assistant.io/lovelace/picture-elements/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold..
+  /// https://www.home-assistant.io/lovelace/picture-elements/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Overwrites icon. https://www.home-assistant.io/lovelace/picture-elements/#icon
+  icon: String?
+
+  /// Set to true to have icons colored when entity is active
+  /// https://www.home-assistant.io/lovelace/picture-elements/#state_color
+  state_color: Boolean?
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-elements/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// State badge tooltip. Set to null to hide.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#title
+  title: String?
+}
+
+class StateLabelElement {
+  /// This element represents an entity’s state via text.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#state-label
+  type: "state-label"
+
+  /// Entity id, https://www.home-assistant.io/lovelace/picture-elements/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// If present, the corresponding attribute will be shown, instead of the entity’s state.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#attribute
+  attribute: String?
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold..
+  /// https://www.home-assistant.io/lovelace/picture-elements/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Text before entity state. https://www.home-assistant.io/lovelace/picture-elements/#prefix
+  prefix: String?
+
+  /// Text after entity state. https://www.home-assistant.io/lovelace/picture-elements/#suffix
+  suffix: String?
+
+  /// Position and style the element using CSS.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#style
+  style: Style
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-elements/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// State badge tooltip. Set to null to hide.
+  /// https://www.home-assistant.io/lovelace/picture-elements/#title
+  title: String?
+}
+
+class Schema34 {
+  /// The Picture Entity card displays an entity in the form of an image. Instead of images from URL, it
+  /// can also show the picture of camera entities.
+  /// https://www.home-assistant.io/lovelace/picture-entity/
+  type: "picture-entity"
+
+  /// Forces the height of the image to be a ratio of the width. You may enter a value such as: 16x9,
+  /// 16:9, 1.78. https://www.home-assistant.io/lovelace/picture-entity/#aspect_ratio
+  aspect_ratio: String?
+
+  /// Camera entity_id to use. (not required if entity is already a camera-entity).
+  /// https://www.home-assistant.io/lovelace/picture-entity/#camera_image
+  camera_image: String(matches(Regex(#"^camera\..*$"#)))?
+
+  /// “live” will show the live view if stream is enabled.
+  /// https://www.home-assistant.io/lovelace/picture-entity/#camera_view
+  camera_view: ("auto"|"live")?
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-entity/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// An entity_id used for the picture. https://www.home-assistant.io/lovelace/picture-entity/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Action taken on card tap and hold.
+  /// https://www.home-assistant.io/lovelace/picture-entity/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// URL of an image. https://www.home-assistant.io/lovelace/picture-entity/#image
+  image: String?
+
+  /// Overwrite entity name. https://www.home-assistant.io/lovelace/picture-entity/#name
+  name: String?
+
+  /// Shows name in footer. https://www.home-assistant.io/lovelace/picture-entity/#show_name
+  show_name: Boolean?
+
+  /// Shows state in footer. https://www.home-assistant.io/lovelace/picture-entity/#show_state
+  show_state: Boolean?
+
+  /// State-based CSS filters.
+  /// https://www.home-assistant.io/lovelace/picture-entity/#how-to-use-state_filter
+  state_filter: Mapping<String, String>?
+
+  /// Map entity states to images (state: image URL)
+  /// https://www.home-assistant.io/lovelace/picture-entity/#state_image
+  state_image: Mapping<String, String>?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-entity/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/picture-entity/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema35 {
+  /// The Picture Glance card shows an image and corresponding entity states as an icon. The entities on
+  /// the right side allow toggle actions, others show the more information dialog.
+  /// https://www.home-assistant.io/lovelace/picture-glance/
+  type: "picture-glance"
+
+  /// Forces the height of the image to be a ratio of the width. You may enter a value such as: 16x9,
+  /// 16:9, 1.78. https://www.home-assistant.io/lovelace/picture-glance/#aspect_ratio
+  aspect_ratio: String?
+
+  /// Camera entity as Background image.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#camera_image
+  camera_image: String(matches(Regex(#"^camera\..*$"#)))?
+
+  /// “live” will show the live view if stream is enabled.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#camera_view
+  camera_view: ("auto"|"live")?
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// List of entities or entity objects. https://www.home-assistant.io/lovelace/picture-glance/#entities
+  entities: Listing<Entity6>
+
+  /// Entity to use for state_image and state_filter.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))?
+
+  /// Action taken on card tap and hold.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Background image URL. https://www.home-assistant.io/lovelace/picture-glance/#image
+  image: String?
+
+  /// Show entity state-text. https://www.home-assistant.io/lovelace/picture-glance/#show_state
+  show_state: Boolean?
+
+  /// State-based CSS filters.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#how-to-use-state_filter
+  state_filter: Mapping<String, String>?
+
+  /// Background image based on entity state.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#state_image
+  state_image: Mapping<String, String>?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-glance/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/picture-glance/#theme
+  theme: String?
+
+  /// The card title. https://www.home-assistant.io/lovelace/picture-glance/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class PictureGlanceEntityConfig {
+  /// Attribute of the entity to display instead of the state.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#attribute
+  attribute: String?
+
+  /// Action taken on card double tap.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#double_tap_action
+  double_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Action taken on card tap and hold.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#hold_action
+  hold_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Prefix to display before the attribute’s value.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#prefix
+  prefix: String?
+
+  /// Show entity state-text. https://www.home-assistant.io/lovelace/picture-glance/#show_state
+  show_state: Boolean?
+
+  /// Suffix to display after the attribute’s value.
+  /// https://www.home-assistant.io/lovelace/picture-glance/#suffix
+  suffix: String?
+
+  /// Action taken on card tap. https://www.home-assistant.io/lovelace/picture-glance/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  type: String?
+
+  /// Home Assistant entity ID. https://www.home-assistant.io/lovelace/entities/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/entities/#name
+  name: String?
+
+  /// Overwrites icon or entity picture. https://www.home-assistant.io/lovelace/entities/#icon
+  icon: String?
+
+  /// Overwrites entity picture. https://www.home-assistant.io/lovelace/entities/#image
+  image: String?
+}
+
+class Schema36 {
+  /// The Plant Status card is for all the lovely botanists out there.
+  /// https://www.home-assistant.io/lovelace/plant-status/
+  type: "plant-status"
+
+  /// Entity id of plant domain. https://www.home-assistant.io/lovelace/plant-status/#entity
+  entity: String(matches(Regex(#"^plant\..*$"#)))
+
+  /// Overwrites Friendly Name. https://www.home-assistant.io/lovelace/plant-status/#name
+  name: String?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/plant-status/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema37 {
+  /// The Sensor card gives you a quick overview of your sensors state with an optional graph to
+  /// visualize change over time. https://www.home-assistant.io/lovelace/sensor/
+  type: "sensor"
+
+  /// Detail of the graph 1 or 2, 1 equals one point/hour, 2 equals six points/hour.
+  /// https://www.home-assistant.io/lovelace/sensor/#detail
+  detail: Number(this == 1 || this == 2)?
+
+  /// Entity id of sensor domain. https://www.home-assistant.io/lovelace/sensor/#entity
+  entity: String(matches(Regex(#"^sensor\..*$"#)))
+
+  /// Type of graph none or line. https://www.home-assistant.io/lovelace/sensor/#graph
+  graph: ("line"|"none")?
+
+  /// Hours to show in graph. https://www.home-assistant.io/lovelace/sensor/#entity
+  hours_to_show: Int(isPositive)?
+
+  /// The card icon. https://www.home-assistant.io/lovelace/sensor/#icon
+  icon: String?
+
+  /// Limits of the graph Y-axis. https://www.home-assistant.io/lovelace/sensor/#limits
+  limits: Limits?
+
+  /// The card name. https://www.home-assistant.io/lovelace/sensor/#name
+  name: String?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/sensor/#theme
+  theme: String?
+
+  /// The unit of measurement. https://www.home-assistant.io/lovelace/sensor/#unit
+  unit: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+/// Limits of the graph Y-axis. https://www.home-assistant.io/lovelace/sensor/#limits
+class Limits {
+  /// Minimum value of the graph Y-axis. https://www.home-assistant.io/lovelace/sensor/#min
+  min: Number?
+
+  /// Maximum value of the graph Y-axis. https://www.home-assistant.io/lovelace/sensor/#max
+  max: Number?
+}
+
+class Schema38 {
+  /// The Shopping List card allows you to add, edit, check-off, and clear items from your shopping list.
+  /// https://www.home-assistant.io/lovelace/shopping-list/
+  type: "shopping-list"
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/shopping-list/#theme
+  theme: String?
+
+  /// Title of Shopping List. https://www.home-assistant.io/lovelace/shopping-list/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema39 {
+  /// The Statistics Graph card allows you to display a graph of statistics data for each of the entities
+  /// listed. https://www.home-assistant.io/lovelace/statistics-graph/
+  type: "statistics-graph"
+
+  /// A list of entity IDs or entity objects.
+  /// https://www.home-assistant.io/lovelace/statistics-graph/#entities
+  entities: Listing<Entity7>
+
+  /// If the chart should be rendered as a bar or a line chart.
+  /// https://www.home-assistant.io/lovelace/statistics-graph/#chart_type
+  chart_type: ("bar"|"line")?
+
+  /// Days to show in graph. Minimum is 1 day.
+  /// https://www.home-assistant.io/lovelace/statistics-graph/#days_to_show
+  days_to_show: Int(isPositive)?
+
+  /// The period of the rendered graph. https://www.home-assistant.io/lovelace/statistics-graph/#period
+  period: ("5minute"|"day"|"hour"|"month")?
+
+  /// The stat types to render. min, max, mean, sum.
+  /// https://www.home-assistant.io/lovelace/statistics-graph/#stat_types
+  stat_types: (Listing<StatType>|StatType)?
+
+  /// The card title. https://www.home-assistant.io/lovelace/statistics-graph/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema40 {
+  /// The Thermostat card gives control of your climate entity, allowing you to change the temperature
+  /// and mode of the entity. https://www.home-assistant.io/lovelace/thermostat/
+  type: "thermostat"
+
+  /// Entity id of climate domain. https://www.home-assistant.io/lovelace/thermostat/#entity
+  entity: String(matches(Regex(#"^climate\..*$"#)))
+
+  /// Overwrites friendly name. https://www.home-assistant.io/lovelace/thermostat/#name
+  name: String?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/thermostat/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+
+  /// A list of features to customize the card.
+  /// https://www.home-assistant.io/dashboards/thermostat/#features
+  features: Listing<Feature1>?
+}
+
+class ClimateHvacModesFeature {
+  type: "climate-hvac-modes"
+
+  hvac_modes: Listing<String>?
+
+  style: ("dropdown"|"icons")?
+}
+
+class ClimatePresetModesFeature {
+  type: "climate-preset-modes"
+
+  preset_modes: Listing<String>?
+
+  style: ("dropdown"|"icons")?
+}
+
+class TargetTemperatureFeature {
+  type: "target-temperature"
+}
+
+class ClimateFanModesFeature {
+  type: "climate-fan-modes"
+
+  fan_modes: Listing<String>?
+
+  style: ("dropdown"|"icons")?
+}
+
+class ClimateSwingModesFeature {
+  type: "climate-swing-modes"
+
+  swing_modes: Listing<String>?
+
+  style: ("dropdown"|"icons")?
+}
+
+class AuxHeatFeature {
+  type: "aux-heat"
+}
+
+class Schema41 {
+  /// The tile card gives you a quick overview of your entity. The card allows you to toggle the entity
+  /// and show the more info dialog. https://www.home-assistant.io/dashboards/tile/
+  type: "tile"
+
+  /// Set the color when the entity is active. By default, the color is based on state, domain, and
+  /// device_class of your entity. It accepts color token or hex color code.
+  /// https://www.home-assistant.io/dashboards/tile/#color
+  color: String?
+
+  /// Entity to show in the tile card https://www.home-assistant.io/dashboards/tile/#entity
+  entity: String(matches(Regex(#"^.*\..*$"#)))
+
+  features: Listing<TileFeatures>?
+
+  /// Overwrites icon. https://www.home-assistant.io/dashboards/tile/#icon
+  icon: String?
+
+  /// Action taken on icon card tap. By default, it will toggle the entity (if possible), otherwise, show
+  /// the “more-info” dialog. https://www.home-assistant.io/dashboards/tile/#icon_tap_action
+  icon_tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+
+  /// Overwrites friendly name. https://www.home-assistant.io/dashboards/tile/#name
+  name: String?
+
+  /// If your entity has a picture, it will replace the icon.
+  /// ttps://www.home-assistant.io/dashboards/tile/#show_entity_picture
+  show_entity_picture: Boolean?
+
+  /// Action taken on card tap. By default, it will show the “more-info” dialog.
+  /// https://www.home-assistant.io/dashboards/tile/#tap_action
+  tap_action: (
+    String(matches(Regex(#"^!include .*\.yaml$"#)))
+    |String(matches(Regex(#"^!include .*\.yml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#r.*\.yml$"#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yaml$
+  """#)))
+    |String(matches(Regex(#"""
+  ^!include
+  .*\.yml$
+  """#)))
+    |String(matches(Regex(#"^!include\#t.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include\#t.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |String(matches(Regex(#"^!include.*\.yaml$"#)))
+    |String(matches(Regex(#"^!include.*\.yml$"#)))
+    |CallServiceAction
+    |CustomAction
+    |MoreInfoAction
+    |NavigateAction
+    |NoneAction
+    |PerformActionAction
+    |ToggleAction
+    |URLAction)?
+}
+
+class CoverOpenCloseFeature {
+  /// Widget that display buttons to open, close or stop a cover.
+  /// https://www.home-assistant.io/dashboards/tile/#cover-openclose
+  type: "cover-open-close"
+}
+
+class CoverTiltFeature {
+  /// Widget that display buttons to open, close or stop a cover.
+  /// https://www.home-assistant.io/dashboards/tile/#cover-tilt
+  type: "cover-tilt"
+}
+
+class LightBrightnessFeature {
+  /// Widget that display a slider to select the brightness for a light.
+  /// https://www.home-assistant.io/dashboards/tile/#light-brightness
+  type: "light-brightness"
+}
+
+class VacuumCommandsFeature {
+  /// Widget that display buttons to control a vacuum.
+  /// https://www.home-assistant.io/dashboards/tile/#vacuum-commands
+  type: "vacuum-commands"
+
+  /// List of commands to show on the card. https://www.home-assistant.io/dashboards/tile/#commands
+  commands: Listing<VacuumCommands>
+}
+
+class Schema42 {
+  /// The Vertical Stack card allows you to group multiple cards so they always sit in the same column.
+  /// https://www.home-assistant.io/lovelace/vertical-stack/
+  type: "vertical-stack"
+
+  /// List of cards. https://www.home-assistant.io/lovelace/vertical-stack/#cards
+  cards: Listing<Card>
+
+  /// Title of Stack. https://www.home-assistant.io/lovelace/vertical-stack/#title
+  title: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+class Schema43 {
+  /// The Weather Forecast card displays the weather. Very useful to include on interfaces that people
+  /// display on the wall. https://www.home-assistant.io/lovelace/weather-forecast/
+  type: "weather-forecast"
+
+  /// The entity_id of the weather platform to use.
+  /// https://www.home-assistant.io/lovelace/weather-forecast/#entity
+  entity: String(matches(Regex(#"^weather\..*$"#)))
+
+  /// Overwrites the friendly name. https://www.home-assistant.io/lovelace/weather-forecast/#name
+  name: String?
+
+  /// Show next hours/days forecast.
+  /// https://www.home-assistant.io/lovelace/weather-forecast/#show_forecast
+  show_forecast: Boolean?
+
+  /// Which attribute to display under the temperature.
+  /// https://www.home-assistant.io/lovelace/weather-forecast/#secondary_info_attribute
+  secondary_info_attribute: String?
+
+  /// Set to any theme within themes.yaml. https://www.home-assistant.io/lovelace/weather-forecast/#theme
+  theme: String?
+
+  /// Layout options for the view this card is in
+  view_layout: ViewLayout?
+}
+
+typealias States = "arm_away"|"arm_custom_bypass"|"arm_home"|"arm_night"
+
+typealias Card =
+  Schema
+  |Schema1
+  |Schema2
+  |Schema3
+  |Schema4
+  |Schema5
+  |Schema6
+  |Schema7
+  |Schema8
+  |Schema9
+  |Schema10
+  |Schema11
+  |Schema12
+  |Schema13
+  |Schema14
+  |Schema15
+  |Schema16
+  |Schema17
+  |Schema18
+  |Schema19
+  |Schema20
+  |Schema21
+  |Schema22
+  |Schema23
+  |Schema24
+  |Schema25
+  |Schema26
+  |Schema27
+  |Schema28
+  |Schema29
+  |Schema30
+  |Schema31
+  |Schema32
+  |Schema33
+  |Schema34
+  |Schema35
+  |Schema36
+  |Schema37
+  |Schema38
+  |Schema39
+  |Schema40
+  |Schema41
+  |Schema42
+  |Schema43
+
+typealias Entity =
+  String(matches(Regex(#"^.*\..*$"#)))
+  |AttributeRow
+  |ButtonRow
+  |ButtonsRow
+  |CallServiceRow
+  |CastRow
+  |ConditionalRow
+  |CustomRow
+  |DividerRow
+  |EntityRow
+  |SectionRow
+  |TextRow
+  |WeblinkRow
+
+typealias Style = Mapping<String, Any>
+
+typealias Row =
+  AttributeRow
+  |ButtonRow
+  |ButtonsRow
+  |CallServiceRow
+  |CastRow
+  |ConditionalRow
+  |CustomRow
+  |DividerRow
+  |EntityRow
+  |SectionRow
+  |TextRow
+  |WeblinkRow
+
+typealias Entity7 = String(matches(Regex(#"^.*\..*$"#)))|EntityConfig
+
+typealias Entity2 = String(matches(Regex(#"^.*\..*$"#)))|EntityFilterEntityConfig
+
+typealias StateFilter = StateFilterConfig|String
+
+typealias Entity3 = String(matches(Regex(#"^.*\..*$"#)))|GlanceEntityConfig
+
+typealias Feature = TargetHumidityFeature|HumidifierModesFeature|HumidifierToggleFeature
+
+typealias GeoLocationEntity = String(matches(Regex(#"^geo_location\..*$"#)))|"all"
+
+typealias Element =
+  ConditionalElement
+  |CustomElement
+  |IconElement
+  |ImageElement
+  |ServiceButtonElement
+  |StateBadgeElement
+  |StateIconElement
+  |StateLabelElement
+
+typealias Entity6 = String(matches(Regex(#"^.*\..*$"#)))|PictureGlanceEntityConfig
+
+typealias StatType = "max"|"mean"|"min"|"sum"
+
+typealias Feature1 =
+  ClimateHvacModesFeature
+  |ClimatePresetModesFeature
+  |TargetTemperatureFeature
+  |ClimateFanModesFeature
+  |ClimateSwingModesFeature
+  |AuxHeatFeature
+
+typealias TileFeatures = CoverOpenCloseFeature|CoverTiltFeature|LightBrightnessFeature|VacuumCommandsFeature
+
+typealias VacuumCommands = "clean_spot"|"locate"|"return_home"|"start_pause"|"stop"

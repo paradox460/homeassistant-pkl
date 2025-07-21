@@ -1,0 +1,61 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-scene.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationScene
+
+class Item {
+  /// Entities to control and their desired state.
+  /// https://www.home-assistant.io/integrations/scene#entities
+  entities: 
+    String(matches(Regex("^!include_dir_named .*$")))
+    |String(matches(Regex("^!include_dir_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_named\t.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named .*$")))
+    |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |Mapping<String, ItemEntity|String|Number|Boolean>
+
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/scene#icon
+  icon: String?
+
+  /// A unique identifier for this automation. Do not use the same twice, ever!
+  /// https://www.home-assistant.io/integrations/scene
+  id: String?
+
+  /// Friendly name of scene. https://www.home-assistant.io/integrations/scene#name
+  name: String
+
+  /// Additional data for merely for use with the frontend. Has no functional effect.
+  metadata: Any?
+}
+
+class ItemEntity {
+  state: String?
+
+  brightness: (String|Number(isBetween(0, 255)))?
+
+  source: String?
+
+  color_temp: (String|Number(this >= 1))?
+
+  xy_color: Any?
+
+  /// DEPRECATED.
+  ///
+  /// Using transitions on scene using this property is no longer supported. Alternative:
+  /// https://www.home-assistant.io/docs/scene/#using-scene-transitions
+  transition: Listing<Any>?
+}

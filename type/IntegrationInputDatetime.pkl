@@ -1,0 +1,47 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-input_datetime.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationInputDatetime
+
+class Item {
+  /// Set to true if the input should have a date. At least one of has_time or has_date must be defined.
+  /// https://www.home-assistant.io/integrations/input_datetime/#has_date
+  has_date: Boolean?
+
+  /// Set to true if the input should have a time. At least one of has_time or has_date must be defined.
+  /// https://www.home-assistant.io/integrations/input_datetime/#has_time
+  has_time: Boolean?
+
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/input_boolean#icon
+  icon: String?
+
+  /// Initial value when Home Assistant starts.
+  /// https://www.home-assistant.io/integrations/input_datetime/#initial
+  initial: String?
+
+  /// Name of the input datetime. https://www.home-assistant.io/integrations/input_datetime/#name
+  name: String?
+}
+
+typealias Schema = Mapping<String, 
+  String(matches(Regex("^!include_dir_named .*$")))
+  |String(matches(Regex("^!include_dir_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_named\t.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named .*$")))
+  |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |Item
+  |Any>

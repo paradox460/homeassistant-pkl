@@ -1,0 +1,315 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-sensor.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationSensor
+
+class SensorPlatformSchema {
+  /// The group sensor platform lets you combine multiple sensors into one entity.
+  /// https://www.home-assistant.io/integrations/group#sensor-number-and-input_number-groups
+  platform: "group"
+
+  /// Sets the class of the device, changing the device state and icon that is displayed on the UI.
+  /// https://www.home-assistant.io/integrations/group#device_class
+  device_class: (
+    "apparent_power"
+    |"aqi"
+    |"area"
+    |"atmospheric_pressure"
+    |"battery"
+    |"blood_glucose_concentration"
+    |"carbon_dioxide"
+    |"carbon_monoxide"
+    |"conductivity"
+    |"current"
+    |"data_rate"
+    |"data_size"
+    |"date"
+    |"distance"
+    |"duration"
+    |"energy"
+    |"energy_distance"
+    |"energy_storage"
+    |"enum"
+    |"frequency"
+    |"gas"
+    |"humidity"
+    |"illuminance"
+    |"irradiance"
+    |"moisture"
+    |"monetary"
+    |"nitrogen_dioxide"
+    |"nitrogen_monoxide"
+    |"nitrous_oxide"
+    |"ozone"
+    |"ph"
+    |"pm1"
+    |"pm10"
+    |"pm25"
+    |"power"
+    |"power_factor"
+    |"precipitation"
+    |"precipitation_intensity"
+    |"pressure"
+    |"reactive_power"
+    |"signal_strength"
+    |"sound_pressure"
+    |"speed"
+    |"sulphur_dioxide"
+    |"temperature"
+    |"timestamp"
+    |"volatile_organic_compounds"
+    |"volatile_organic_compounds_parts"
+    |"voltage"
+    |"volume"
+    |"volume_flow_rate"
+    |"volume_storage"
+    |"water"
+    |"weight"
+    |"wind_speed")?
+
+  /// A list of entities to be included in the sensor group.
+  /// https://www.home-assistant.io/integrations/group#sensor-number-and-input_number-groups
+  entities: Entities
+
+  /// Set this to true if the group state should ignore sensors with non numeric values.
+  /// https://www.home-assistant.io/integrations/group#ignore_non_numeric
+  ignore_non_numeric: Boolean?
+
+  /// The name of the sensor group.
+  /// https://www.home-assistant.io/integrations/group#sensor-number-and-input_number-groups
+  name: String?
+
+  /// Sets the state class for the sensor. https://www.home-assistant.io/integrations/group#state_class
+  state_class: ("measurement"|"total"|"total_increasing")?
+
+  /// The type of sensor: min, max, last, mean, median, range, product, stdev, or sum.
+  /// https://www.home-assistant.io/integrations/group#type
+  type: "last"|"max"|"mean"|"median"|"min"|"product"|"range"|"stdev"|"sum"
+
+  /// An ID that uniquely identifies this sensor group.
+  /// https://www.home-assistant.io/integrations/group#sensor-number-and-input_number-groups
+  unique_id: String?
+
+  /// Set the unit of measurement for the sensor.
+  /// https://www.home-assistant.io/integrations/group#unit_of_measurement
+  unit_of_measurement: String?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}
+
+class SensorPlatformSchema1 {
+  /// The template platform supports sensors which get their values from other entities.
+  /// https://www.home-assistant.io/integrations/template
+  platform: "template"
+
+  /// List of sensors. https://www.home-assistant.io/integrations/template#sensors
+  sensors: Mapping<String, 
+    String(matches(Regex("^!include_dir_named .*$")))
+    |String(matches(Regex("^!include_dir_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_named\t.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named .*$")))
+    |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |SensorPlatformItem>
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class SensorPlatformItem {
+  /// Defines templates for attributes of the sensor.
+  /// https://www.home-assistant.io/integrations/template#attribute_templates
+  attribute_templates: Mapping<String, String>?
+
+  /// Defines a template to get the available state of the sensor. Return true if the device is
+  /// available, false otherwise.
+  /// https://www.home-assistant.io/integrations/template#availability_template
+  availability_template: String?
+
+  /// Sets the class of the device, changing the device state and icon that is displayed on the frontend.
+  /// https://www.home-assistant.io/integrations/template#device_class
+  device_class: (
+    "apparent_power"
+    |"aqi"
+    |"area"
+    |"atmospheric_pressure"
+    |"battery"
+    |"blood_glucose_concentration"
+    |"carbon_dioxide"
+    |"carbon_monoxide"
+    |"conductivity"
+    |"current"
+    |"data_rate"
+    |"data_size"
+    |"date"
+    |"distance"
+    |"duration"
+    |"energy"
+    |"energy_distance"
+    |"energy_storage"
+    |"enum"
+    |"frequency"
+    |"gas"
+    |"humidity"
+    |"illuminance"
+    |"irradiance"
+    |"moisture"
+    |"monetary"
+    |"nitrogen_dioxide"
+    |"nitrogen_monoxide"
+    |"nitrous_oxide"
+    |"ozone"
+    |"ph"
+    |"pm1"
+    |"pm10"
+    |"pm25"
+    |"power"
+    |"power_factor"
+    |"precipitation"
+    |"precipitation_intensity"
+    |"pressure"
+    |"reactive_power"
+    |"signal_strength"
+    |"sound_pressure"
+    |"speed"
+    |"sulphur_dioxide"
+    |"temperature"
+    |"timestamp"
+    |"volatile_organic_compounds"
+    |"volatile_organic_compounds_parts"
+    |"voltage"
+    |"volume"
+    |"volume_flow_rate"
+    |"volume_storage"
+    |"water"
+    |"weight"
+    |"wind_speed")?
+
+  /// Defines a template for the entity picture of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#entity_picture_template
+  entity_picture_template: String?
+
+  /// Name to use in the frontend.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#friendly_name
+  friendly_name: String?
+
+  /// Defines a template for the name to be used in the frontend (this overrides friendly_name).
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#friendly_name
+  friendly_name_template: String?
+
+  /// Defines a template for the icon of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#icon_template
+  icon_template: String?
+
+  /// The State Class of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#state_class
+  state_class: ("measurement"|"total"|"total_increasing")?
+
+  /// Defines the units of measurement of the sensor, if any. This will also influence the graphical
+  /// presentation in the history visualization as a continuous value.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#unique_id
+  unit_of_measurement: String?
+
+  /// An ID that uniquely identifies this binary sensor. Set this to an unique value to allow
+  /// customization through the UI. https://www.home-assistant.io/integrations/template#unique_id
+  unique_id: String?
+
+  /// Defines a template to get the state of the sensor.
+  /// https://www.home-assistant.io/integrations/template#value_template
+  value_template: String
+}
+
+class SensorPlatformSchema2 {
+  /// The mqtt_room sensor platform allows you to detect the indoor location of devices using MQTT
+  /// clients. https://www.home-assistant.io/integrations/sensor.mqtt
+  platform: "mqtt_room"
+
+  /// The device id to track for this sensor.
+  /// https://www.home-assistant.io/integrations/mqtt_room/#device_id
+  device_id: String
+
+  /// The name of the MQTT sensor. https://www.home-assistant.io/integrations/sensor.mqtt#name
+  name: String?
+
+  /// The MQTT topic subscribed to receive sensor values.
+  /// https://www.home-assistant.io/integrations/sensor.mqtt#state_topic
+  state_topic: String
+
+  /// The time in seconds after which a room presence state is considered old.
+  /// https://www.home-assistant.io/integrations/mqtt_room/#timeout
+  timeout: Int(isPositive)?
+
+  /// The time in seconds after which the state should be set to not_home if there were no updates. 0
+  /// disables the check. https://www.home-assistant.io/integrations/mqtt_room/#away_timeout
+  away_timeout: Int(isPositive)?
+
+  /// An ID that uniquely identifies this room sensor. If two sensors have the same unique ID, Home
+  /// Assistant will raise an exception. https://www.home-assistant.io/integrations/mqtt_room/#unique_id
+  unique_id: String?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class OtherPlatform {
+  /// Platform domain
+  platform: String(matches(Regex(#"^(?!(group|mqtt_room|template|mqtt)$)\w+$"#)))
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+typealias Entities = String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>
+
+typealias Item = SensorPlatformSchema|SensorPlatformSchema1|SensorPlatformSchema2|OtherPlatform

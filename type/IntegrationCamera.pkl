@@ -1,0 +1,95 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-camera.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationCamera
+
+class ProxyCameraPlatformSchema {
+  /// The proxy camera integration allows you to pass another camera's output through post-processing
+  /// routines and generate a new camera with the post-processed output.
+  /// https://www.home-assistant.io/integrations/proxy/
+  platform: "proxy"
+
+  /// The ID of another Home Assistant camera to post-process.
+  /// https://www.home-assistant.io/integrations/proxy/#entity_id
+  entity_id: String(matches(Regex(#"^camera\..*$"#)))
+
+  /// This parameter allows you to override the name of your camera.
+  /// https://www.home-assistant.io/integrations/proxy/#name
+  name: String?
+
+  /// The operating mode, either `resize` or `crop`.
+  /// https://www.home-assistant.io/integrations/proxy/#mode
+  mode: ("crop"|"resize")?
+
+  /// The maximum width of single images taken from the camera (aspect ratio will be maintained on resize
+  /// processing). https://www.home-assistant.io/integrations/proxy/#max_image_width
+  max_image_width: Int(isPositive)?
+
+  /// The maximum height of single images taken from the camera, only used for crop operations. If not
+  /// provided, the original height is assumed by default.
+  /// https://www.home-assistant.io/integrations/proxy/#max_image_height
+  max_image_height: Int(isPositive)?
+
+  /// The maximum width of the MJPEG stream from the camera (aspect ratio will be maintained on resize
+  /// processing). https://www.home-assistant.io/integrations/proxy/#max_stream_width
+  max_stream_width: Int(isPositive)?
+
+  /// The maximum height of the MJPEG stream from the camera, only used for crop operations. If not
+  /// provided, the original height is assumed by default.
+  /// https://www.home-assistant.io/integrations/proxy/#max_stream_height
+  max_stream_height: Int(isPositive)?
+
+  /// The top (y) coordinate to be used as a starting point for crop operations.
+  /// https://www.home-assistant.io/integrations/proxy/#image_top
+  image_top: Int?
+
+  /// The left (x) coordinate to be used as a starting point for crop operations.
+  /// https://www.home-assistant.io/integrations/proxy/#image_left
+  image_left: Int?
+
+  /// The quality level used for resulting JPEG for snapshots.
+  /// https://www.home-assistant.io/integrations/proxy/#image_quality
+  image_quality: Int(isPositive)?
+
+  /// The quality level used for resulting MJPEG streams.
+  /// https://www.home-assistant.io/integrations/proxy/#stream_quality
+  stream_quality: Int(isPositive)?
+
+  /// The minimum time in seconds between generating successive image snapshots.
+  /// https://www.home-assistant.io/integrations/proxy/#image_refresh_rate
+  image_refresh_rate: Int(isPositive)?
+
+  /// Resize the image even if the resulting image would take up more bandwidth than the original.
+  /// https://www.home-assistant.io/integrations/proxy/#force_resize
+  force_resize: Boolean?
+
+  /// Preserve the last image and re-send in the case the camera is not responding.
+  /// https://www.home-assistant.io/integrations/proxy/#cache_images
+  cache_images: Boolean?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}

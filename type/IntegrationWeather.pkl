@@ -1,0 +1,142 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-weather.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationWeather
+
+class WeatherPlatformSchema {
+  /// The template integrations creates weather provider that combines integrations and an existing
+  /// weather provider into a fused weather provider.
+  /// https://www.home-assistant.io/integrations/weather.template
+  platform: "template"
+
+  /// Defines a template for the current apparent temperature.
+  /// https://www.home-assistant.io/integrations/weather.template#apparent_temperature_template
+  apparent_temperature_template: String?
+
+  /// The attribution to be shown in the frontend.
+  /// https://www.home-assistant.io/integrations/weather.template#attribution_template
+  attribution_template: String?
+
+  /// Defines templates for the current cloud coverage.
+  /// https://www.home-assistant.io/integrations/weather.template#cloud_coverage_template
+  cloud_coverage_template: String?
+
+  /// Defines templates for the current weather condition.
+  /// https://www.home-assistant.io/integrations/weather.template#condition_template
+  condition_template: String
+
+  /// Defines templates for the current dew point.
+  /// https://www.home-assistant.io/integrations/weather.template#dew_point_template
+  dew_point_template: String?
+
+  /// Defines templates for the daily forcast data.
+  /// https://www.home-assistant.io/integrations/weather.template#forecast_template
+  forecast_daily_template: String?
+
+  /// Defines templates for the twice daily forcast data.
+  /// https://www.home-assistant.io/integrations/weather.template#forecast_template
+  forecast_twice_daily_template: String?
+
+  /// Defines templates for the hourly forcast data.
+  /// https://www.home-assistant.io/integrations/weather.template#forecast_template
+  forecast_hourly_template: String?
+
+  /// Defines templates for the current humidity.
+  /// https://www.home-assistant.io/integrations/weather.template#humidity_template
+  humidity_template: String
+
+  /// Name to use in the frontend. https://www.home-assistant.io/integrations/weather.template#name
+  name: String
+
+  /// The current ozone level. https://www.home-assistant.io/integrations/weather.template#ozone_template
+  ozone_template: String?
+
+  /// The unit of measurement for the precipitation output.
+  /// https://www.home-assistant.io/integrations/weather.template#precipitation_unit
+  precipitation_unit: String?
+
+  /// Defines templates for the current air pressure.
+  /// https://www.home-assistant.io/integrations/weather.template#pressure_template
+  pressure_template: String?
+
+  /// Unit for pressure_template output.
+  /// https://www.home-assistant.io/integrations/weather.template#pressure_unit
+  pressure_unit: ("Pa"|"bar"|"cbar"|"hPa"|"inHg"|"kPa"|"mbar"|"mmHg"|"psi")?
+
+  /// Defines templates for the current temperature.
+  /// https://www.home-assistant.io/integrations/weather.template#temperature_template
+  temperature_template: String
+
+  /// Unit for temperature_template output.
+  /// https://www.home-assistant.io/integrations/weather.template#temperature_unit
+  temperature_unit: ("K"|"°C"|"°F")?
+
+  /// An ID that uniquely identifies this weather entity. Set this to a unique value to allow
+  /// customization through the UI. https://www.home-assistant.io/integrations/weather.template#unique_id
+  unique_id: String?
+
+  /// The current visibility.
+  /// https://www.home-assistant.io/integrations/weather.template#visibility_template
+  visibility_template: String?
+
+  /// Unit for visibility_template output.
+  /// https://www.home-assistant.io/integrations/weather.template#visibility_unit
+  visibility_unit: ("cm"|"ft"|"in"|"km"|"m"|"mi"|"mm"|"yd")?
+
+  /// The current wind bearing.
+  /// https://www.home-assistant.io/integrations/weather.template#wind_bearing_template
+  wind_bearing_template: String?
+
+  /// Defines templates for the current wind gust speed.
+  /// https://www.home-assistant.io/integrations/weather.template#wind_gust_speed_template
+  wind_gust_speed_template: String?
+
+  /// Defines templates for the current wind speed.
+  /// https://www.home-assistant.io/integrations/weather.template#wind_speed_template
+  wind_speed_template: String?
+
+  /// Unit for wind_speed_template output.
+  /// https://www.home-assistant.io/integrations/weather.template#wind_speed_unit
+  wind_speed_unit: ("in/d"|"in/h"|"km/h"|"m/s"|"mm/d"|"mph")?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}
+
+class OtherPlatform {
+  /// Platform domain
+  platform: String(matches(Regex(#"^(?!(template)$)\w+$"#)))
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+typealias Item = WeatherPlatformSchema|OtherPlatform

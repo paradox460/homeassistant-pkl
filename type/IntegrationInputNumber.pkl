@@ -1,0 +1,56 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-input_number.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationInputNumber
+
+class Item {
+  /// Show a "slider" or a input "box" in the UI frontend. Defaults to "slider".
+  /// https://www.home-assistant.io/integrations/input_number#mode
+  mode: ("box"|"slider")?
+
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/input_number#icon
+  icon: String?
+
+  /// Initial value when Home Assistant starts.
+  /// https://www.home-assistant.io/integrations/input_number#initial
+  initial: Number?
+
+  /// Maximum value of the number https://www.home-assistant.io/integrations/input_number#max
+  max: Number
+
+  /// Minimum value of the number https://www.home-assistant.io/integrations/input_number#min
+  min: Number
+
+  /// Name of the input number. https://www.home-assistant.io/integrations/input_number#name
+  name: String?
+
+  /// Step value. Smallest value 0.001. https://www.home-assistant.io/integrations/input_number#step
+  step: Number?
+
+  /// Unit of measurement in which the value of the slider is expressed in.
+  /// https://www.home-assistant.io/integrations/input_number#unit_of_measurement
+  unit_of_measurement: String?
+}
+
+typealias Schema = Mapping<String, 
+  String(matches(Regex("^!include_dir_named .*$")))
+  |String(matches(Regex("^!include_dir_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_named\t.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named .*$")))
+  |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |Item
+  |Any>

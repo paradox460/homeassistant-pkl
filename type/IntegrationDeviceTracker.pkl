@@ -1,0 +1,35 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-device_tracker.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationDeviceTracker
+
+class OtherPlatform {
+  /// Platform domain
+  platform: String(matches(Regex(#"^(?!(mqtt)$)\w+$"#)))
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}

@@ -1,0 +1,132 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-homeassistant-customize.json>.
+///
+/// WARN: The root schema describes open-ended properties, but this is not possible to describe at the
+/// module level.
+module IntegrationHomeassistantCustomize
+
+class CoreCustomizeItem {
+  /// For switches with an assumed state two buttons are shown (turn off, turn on) instead of a switch.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#assumed_state
+  assumed_state: Boolean?
+
+  /// Sets the class of the device, changing the device state and icon that is displayed on the UI (see
+  /// below). Please note: It does not set the unit_of_measurement.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#device_class
+  device_class: (
+    "apparent_power"
+    |"aqi"
+    |"area"
+    |"atmospheric_pressure"
+    |"awning"
+    |"battery"
+    |"battery_charging"
+    |"blind"
+    |"blood_glucose_concentration"
+    |"carbon_dioxide"
+    |"carbon_monoxide"
+    |"cold"
+    |"conductivity"
+    |"connectivity"
+    |"current"
+    |"curtain"
+    |"damper"
+    |"data_rate"
+    |"data_size"
+    |"date"
+    |"distance"
+    |"door"
+    |"duration"
+    |"energy"
+    |"energy_distance"
+    |"energy_storage"
+    |"enum"
+    |"frequency"
+    |"garage"
+    |"garage_door"
+    |"gas"
+    |"gate"
+    |"heat"
+    |"humidity"
+    |"illuminance"
+    |"irradiance"
+    |"light"
+    |"lock"
+    |"moisture"
+    |"monetary"
+    |"motion"
+    |"moving"
+    |"nitrogen_dioxide"
+    |"nitrogen_monoxide"
+    |"nitrous_oxide"
+    |"occupancy"
+    |"opening"
+    |"outlet"
+    |"ozone"
+    |"ph"
+    |"plug"
+    |"pm1"
+    |"pm10"
+    |"pm25"
+    |"power"
+    |"power_factor"
+    |"precipitation"
+    |"precipitation_intensity"
+    |"presence"
+    |"pressure"
+    |"problem"
+    |"reactive_power"
+    |"receiver"
+    |"running"
+    |"safety"
+    |"shade"
+    |"shutter"
+    |"signal_strength"
+    |"smoke"
+    |"sound"
+    |"sound_pressure"
+    |"speaker"
+    |"speed"
+    |"sulphur_dioxide"
+    |"switch"
+    |"tamper"
+    |"temperature"
+    |"timestamp"
+    |"tv"
+    |"update"
+    |"vibration"
+    |"volatile_organic_compounds"
+    |"volatile_organic_compounds_parts"
+    |"voltage"
+    |"volume"
+    |"volume_flow_rate"
+    |"volume_storage"
+    |"water"
+    |"weight"
+    |"wind_speed"
+    |"window")?
+
+  /// URL to use as picture for entity.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#entity_picture
+  entity_picture: String?
+
+  /// Name of the entity as displayed in the UI. Please note that most of the time you can just rename
+  /// the entity in the UI itself.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#friendly_name
+  friendly_name: String?
+
+  /// Any icon from MaterialDesignIcons.com. Prefix name with mdi:. For example: mdi:home. Please note
+  /// that most of the time you can just change the entity icon in the UI itself.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#icon
+  icon: String?
+
+  /// Sets the initial state for automations, on (true) or off (false).
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#initial_state
+  initial_state: Boolean?
+
+  /// Defines the units of measurement, if any. This will also influence the graphical presentation in
+  /// the history visualization as continuous value. Sensors with missing unit_of_measurement are showing
+  /// as discrete values.
+  /// https://www.home-assistant.io/docs/configuration/customizing-devices/#unit_of_measurement
+  unit_of_measurement: String?
+}

@@ -1,0 +1,248 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-binary_sensor.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationBinarySensor
+
+class BinarySensorPlatformSchema {
+  /// The group binary_sensor platform lets you combine multiple binary_sensors into one entity.
+  /// https://www.home-assistant.io/integrations/binary_sensor.group
+  platform: "group"
+
+  /// Set this to true if the group state should only turn on if all grouped entities are on, false
+  /// otherwise. https://www.home-assistant.io/integrations/binary_sensor.group/#all
+  all: Boolean?
+
+  /// Sets the class of the device, changing the device state and icon that is displayed on the UI.
+  /// https://www.home-assistant.io/integrations/binary_sensor.group#device_class
+  device_class: (
+    "battery"
+    |"battery_charging"
+    |"carbon_monoxide"
+    |"cold"
+    |"connectivity"
+    |"door"
+    |"garage_door"
+    |"gas"
+    |"heat"
+    |"light"
+    |"lock"
+    |"moisture"
+    |"motion"
+    |"moving"
+    |"occupancy"
+    |"opening"
+    |"plug"
+    |"power"
+    |"presence"
+    |"problem"
+    |"running"
+    |"safety"
+    |"smoke"
+    |"sound"
+    |"tamper"
+    |"update"
+    |"vibration"
+    |"window")?
+
+  /// A list of entities to be included in the binary sensor group.
+  /// https://www.home-assistant.io/integrations/binary_sensor.group/#entities
+  entities: Entities
+
+  /// The name of the binary sensor group. Defaults to "Binary Sensor Group".
+  /// https://www.home-assistant.io/integrations/binary_sensor.group#name
+  name: String?
+
+  /// An ID that uniquely identifies this binary sensor group. If two binary sensors have the same unique
+  /// ID, Home Assistant will raise an error.
+  /// https://www.home-assistant.io/integrations/binary_sensor.group#unique_id
+  unique_id: String?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}
+
+class BinarySensorPlatformSchema1 {
+  /// The template platform supports binary sensors which get their values from other entities. The state
+  /// of a Template Binary Sensor can only be on or off.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template
+  platform: "template"
+
+  /// List of sensors. https://www.home-assistant.io/integrations/binary_sensor.template#sensors
+  sensors: Mapping<String, 
+    String(matches(Regex("^!include_dir_named .*$")))
+    |String(matches(Regex("^!include_dir_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_named\t.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named .*$")))
+    |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |String(matches(Regex("^!include_dir_merge_named.*$")))
+    |BinarySensorPlatformItem>
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class BinarySensorPlatformItem {
+  /// Defines templates for attributes of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#attribute_templates
+  attribute_templates: Mapping<String, String>?
+
+  /// Defines a template to get the available state of the sensor. Return true if the device is
+  /// available, false otherwise.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#availability_template
+  availability_template: String?
+
+  /// The amount of time the template state must be not met before this sensor will switch to off.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#delay_off
+  delay_off: (TimePeriodMap|String|Number)?
+
+  /// The amount of time the template state must be met before this sensor will switch to on.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#delay_on
+  delay_on: (TimePeriodMap|String|Number)?
+
+  /// Sets the class of the device, changing the device state and icon that is displayed on the frontend.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#device_class
+  device_class: (
+    "battery"
+    |"battery_charging"
+    |"carbon_monoxide"
+    |"cold"
+    |"connectivity"
+    |"door"
+    |"garage_door"
+    |"gas"
+    |"heat"
+    |"light"
+    |"lock"
+    |"moisture"
+    |"motion"
+    |"moving"
+    |"occupancy"
+    |"opening"
+    |"plug"
+    |"power"
+    |"presence"
+    |"problem"
+    |"running"
+    |"safety"
+    |"smoke"
+    |"sound"
+    |"tamper"
+    |"update"
+    |"vibration"
+    |"window")?
+
+  /// Defines a template for the entity picture of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#entity_picture_template
+  entity_picture_template: String?
+
+  /// Name to use in the frontend.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#friendly_name
+  friendly_name: String?
+
+  /// Defines a template for the icon of the sensor.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#icon_template
+  icon_template: String?
+
+  /// An ID that uniquely identifies this binary sensor. Set this to an unique value to allow
+  /// customization through the UI.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#unique_id
+  unique_id: String?
+
+  /// The sensor is on if the template evaluates as True and off otherwise.
+  /// https://www.home-assistant.io/integrations/binary_sensor.template#value_template
+  value_template: String
+}
+
+class BinarySensorPlatformSchema2 {
+  /// The tod platform supports binary sensors which get their values by checking if the current time is
+  /// within defined time ranges. https://www.home-assistant.io/integrations/tod
+  platform: "tod"
+
+  /// Name of the sensor https://www.home-assistant.io/integrations/tod/#name
+  name: String
+
+  /// The absolute local time value or sun event for beginning of the time range.
+  /// https://www.home-assistant.io/integrations/tod/#before
+  before: String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$")))|"sunrise"|"sunset"
+
+  /// The time offset of the beginning time range.
+  /// https://www.home-assistant.io/integrations/tod/#before_offset
+  before_offset: (TimePeriodMap|String|Number)?
+
+  /// The absolute local time value or sun event for ending of the time range.
+  /// https://www.home-assistant.io/integrations/tod/#after
+  after: String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$")))|"sunrise"|"sunset"
+
+  /// The time offset of the ending time range.
+  /// https://www.home-assistant.io/integrations/tod/#after_offset
+  after_offset: (TimePeriodMap|String|Number)?
+
+  /// The unique ID for this config block. This will be prefixed to all unique IDs of all entities in
+  /// this block. https://www.home-assistant.io/integrations/tod/#unique_id
+  unique_id: String?
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+class OtherPlatform {
+  /// Platform domain
+  platform: String(matches(Regex(#"^(?!(group|template|tod|mqtt)$)\w+$"#)))
+
+  /// By setting an entity namespace, all entities will be prefixed with that namespace.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#entity-namespace
+  entity_namespace: String?
+
+  /// Allow to change the polling interval if the platform uses a polling mechanism.
+  /// https://www.home-assistant.io/docs/configuration/platform_options/#scan-interval
+  scan_interval: (TimePeriodMap|String|Number)?
+}
+
+typealias Entities = String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>
+
+typealias Item = BinarySensorPlatformSchema|BinarySensorPlatformSchema1|BinarySensorPlatformSchema2|OtherPlatform

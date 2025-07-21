@@ -1,0 +1,23 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-group.json>.
+///
+/// WARN: The root schema describes open-ended properties, but this is not possible to describe at the
+/// module level.
+module IntegrationGroup
+
+class Item {
+  /// Set this to true if the group state should only turn on if all grouped entities are on, false
+  /// otherwise. https://www.home-assistant.io/integrations/group
+  all: Boolean?
+
+  /// A list of entities to group. https://www.home-assistant.io/integrations/group#entities
+  entities: Entities
+
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/group#icon
+  icon: String?
+
+  /// Name of the group. https://www.home-assistant.io/integrations/group#name
+  name: String?
+}
+
+typealias Entities = String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>

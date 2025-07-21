@@ -1,0 +1,54 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-input_text.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationInputText
+
+class Item {
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/input_text/#icon
+  icon: String?
+
+  /// Initial value when Home Assistant starts.
+  /// https://www.home-assistant.io/integrations/input_text#initial
+  initial: String?
+
+  /// Maximum length for the text value. 255 is the maximum number of characters allowed in an entity
+  /// state. https://www.home-assistant.io/integrations/input_text#max
+  max: Int(isBetween(1, 255))?
+
+  /// Minimum length for the text value. https://www.home-assistant.io/integrations/input_text#min
+  min: UInt8?
+
+  /// Can specify text or password. Elements of type “password” provide a way for the user to securely
+  /// enter a value. https://www.home-assistant.io/integrations/input_text#mode
+  mode: ("password"|"text")?
+
+  /// Name of the input text. https://www.home-assistant.io/integrations/input_text/#name
+  name: String?
+
+  /// Regex pattern for client-side validation.
+  /// https://www.home-assistant.io/integrations/input_text#pattern
+  pattern: String?
+}
+
+typealias Schema = Mapping<String, 
+  String(matches(Regex("^!include_dir_named .*$")))
+  |String(matches(Regex("^!include_dir_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_named\t.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named .*$")))
+  |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |Item
+  |Any>

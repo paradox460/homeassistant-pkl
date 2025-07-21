@@ -1,0 +1,3378 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/blueprint-script.json>.
+module BlueprintScript
+
+/// The blueprint schema. https://www.home-assistant.io/docs/blueprint/schema/#the-blueprint-schema
+blueprint: Blueprint
+
+/// The sequence of actions to be performed in the script.
+/// https://www.home-assistant.io/integrations/script/#sequence
+sequence: 
+  String(matches(Regex("^!include_dir_list .*$")))
+  |String(matches(Regex("^!include_dir_list\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_list\t.*$")))
+  |String(matches(Regex("^!include_dir_list.*$")))
+  |String(matches(Regex("^!include_dir_list.*$")))
+  |String(matches(Regex("^!include_dir_merge_list .*$")))
+  |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+  |String(matches(Regex("^!include_dir_merge_list.*$")))
+  |String(matches(Regex("^!include_dir_merge_list.*$")))
+  |String(matches(Regex(#"^\{\{.*$"#)))
+  |String(matches(Regex(#"^\{%.*$"#)))
+  |String(matches(Regex(#"^\{#.*$"#)))
+  |AndCondition
+  |AndShorthandCondition
+  |DeviceCondition
+  |NotCondition
+  |NotShorthandCondition
+  |NumericStateCondition
+  |OrCondition
+  |OrShorthandCondition
+  |ShorthandCondition
+  |StateCondition
+  |SunCondition
+  |TemplateCondition
+  |TimeCondition
+  |TriggerCondition
+  |ZoneCondition
+  |ChooseAction
+  |DelayAction
+  |DeviceAction
+  |EventAction
+  |IfAction
+  |ParallelAction
+  |RepeatAction
+  |SceneAction
+  |ServiceAction
+  |SequenceAction
+  |StopAction
+  |WaitForTriggerAction
+  |WaitTemplateAction
+  |VariablesAction
+  |Listing<Action>
+
+/// Alias will be used to generate an entity_id from.
+/// https://www.home-assistant.io/integrations/script/#alias
+alias: String?
+
+/// Description of the automation. This is helpful to know what the automation does.
+/// https://www.home-assistant.io/integrations/script/#description
+description: String?
+
+/// A list of variables that can be passed into this script when calling it. They become available within
+/// the templates in that script.
+/// https://www.home-assistant.io/integrations/script/#passing-variables-to-scripts
+fields: Mapping<String, Field>?
+
+/// The icon that shows in the frontend. https://www.home-assistant.io/integrations/script/#icon
+icon: String?
+
+/// Controls maximum number of runs executing and/or queued up to run at a time. Only valid with modes
+/// queued and parallel. https://www.home-assistant.io/integrations/script/#max
+max: Int?
+
+/// Controls what happens when script is invoked while it is still running from one or more previous
+/// invocations. https://www.home-assistant.io/integrations/script/#script-modes
+mode: ("parallel"|"queued"|"restart"|"single")?
+
+/// When `max` is exceeded (which is effectively 1 for `single` mode) a log message will be emitted to
+/// indicate this has happened. This controls the severity level of that log message
+/// https://www.home-assistant.io/integrations/script/#script-modes
+max_exceeded: ("critical"|"debug"|"error"|"fatal"|"info"|"notset"|"silent"|"warn"|"warning")?
+
+/// Controls tracing settings of this script.
+/// https://www.home-assistant.io/docs/automation/troubleshooting
+`trace`: Trace?
+
+/// Variables that will be available inside your templates.
+/// https://www.home-assistant.io/integrations/script/#variables
+variables: Data?
+
+/// Controls tracing settings of this script.
+/// https://www.home-assistant.io/docs/automation/troubleshooting
+class Trace {
+  /// The number of automation traces tha are stored for this script.
+  stored_traces: Int(isPositive)?
+}
+
+class Blueprint {
+  /// Defines the name of the author of this Blueprint
+  /// https://www.home-assistant.io/docs/blueprint/schema/#author
+  author: String?
+
+  /// The description of the blueprint. While optional, this field is highly recommended. The description
+  /// can include Markdown. https://www.home-assistant.io/docs/blueprint/schema/#description
+  description: String?
+
+  /// The domain name this blueprint provides a blueprint for.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#domain
+  domain: String
+
+  /// Home Assistant requirements for this Blueprint.
+  homeassistant: Homeassistant?
+
+  /// These are the input fields that the consumer of your blueprint can provide using YAML definition,
+  /// or via a configuration form in the UI. https://www.home-assistant.io/docs/blueprint/schema/#input
+  input: Mapping<String, BlueprintInputSchema|BlueprintInputSectionSchema>?
+
+  /// The name of the blueprint. Keep this short and descriptive.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#name
+  name: String
+
+  /// The URL to the online location where this Blueprint was imported from. Generally there is no need
+  /// to add this, in the future this might be used for updating Blueprints.
+  source_url: String?
+}
+
+/// Home Assistant requirements for this Blueprint.
+class Homeassistant {
+  /// The minimal version number of Home Assistant Core that is needed for this Blueprint.
+  min_version: String?
+}
+
+class BlueprintInputSchema {
+  /// The name of the input field. https://www.home-assistant.io/docs/blueprint/schema/#name
+  name: String?
+
+  /// A short description of the input field. Keep this short and descriptive.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#description
+  description: String?
+
+  /// The default value of this input, in case the input is not provided by the user of this blueprint.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#default
+  default: Any?
+
+  /// The default value of this input, in case the input is not provided by the user of this blueprint.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#default
+  selector: (
+    ActionSelector
+    |AddonSelector
+    |AreaSelector
+    |AssistPipelineSelector
+    |AttributeSelector
+    |BackupLocationSelector
+    |BooleanSelector
+    |ColorRGBSelector
+    |ColorTempSelector
+    |ConditionSelector
+    |ConfigEntrySelector
+    |ConstantSelector
+    |ConversationAgentSelector
+    |CountrySelector
+    |DateSelector
+    |DateTimeSelector
+    |DeviceSelector
+    |DurationSelector
+    |EntitySelector
+    |FileSelector
+    |FloorSelector
+    |IconSelector
+    |LabelSelector
+    |LanguageSelector
+    |LocationSelector
+    |MediaSelector
+    |NumberSelector
+    |ObjectSelector
+    |QRCodeSelector
+    |SelectSelector
+    |StateSelector
+    |TargetSelector
+    |TemplateSelector
+    |TextSelector
+    |ThemeSelector
+    |TimeSelector
+    |TriggerSelector)?
+}
+
+class ActionSelector {
+  /// The action selector allows the user to input one or more sequences of actions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#action-selector
+  action: `Record<string,never>`|Any
+}
+
+class AddonSelector {
+  /// The add-on selector allows the user to input an add-on slug. On the user interface, it will list
+  /// all installed add-ons and use the slug of the selected add-on.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#add-on-selector
+  addon: `Record<string,never>`|Any
+}
+
+class AreaSelector {
+  /// The area selector shows an area finder that can pick a single area. The value of the input will be
+  /// the area ID of the user-selected area.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#area-selector
+  area: AreaAlternate0|Any
+}
+
+class AreaAlternate0 {
+  /// When device options are provided, the list of areas is filtered by areas that at least provide one
+  /// device that matches the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#area-selector
+  device: (DeviceSelectorFilter|Listing<DeviceSelectorFilter>)?
+
+  /// When entity options are provided, the list of areas is filtered by areas that at least provide one
+  /// entity that matches the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#area-selector
+  entity: (EntitySelectorFilter|Listing<EntitySelectorFilter>)?
+
+  /// Allows selecting multiple areas. If set to `true`, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#area-selector
+  multiple: Boolean?
+}
+
+class DeviceSelectorFilter {
+  /// Can be set to an integration domain. Limits the list of devices to devices provided by the set
+  /// integration domain. https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  integration: String(matches(Regex(#"^(?!.+__)(?!_)[\da-z_]+(?<!_)$"#)))?
+
+  /// When set, it limits the list of devices to devices provided by the set manufacturer name.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  manufacturer: String?
+
+  /// When set, it limits the list of devices to devices that have the set model.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  model: String?
+
+  /// When set, the list of devices is limited to devices that have the set model ID.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  model_id: String?
+}
+
+class EntitySelectorFilter {
+  /// Can be set to an integration domain. Limits the list of devices that provide entities by the set
+  /// integration domain. https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  integration: String(matches(Regex(#"^(?!.+__)(?!_)[\da-z_]+(?<!_)$"#)))?
+
+  /// Limits the list of devices that provide entities of a certain domain.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  domain: (Listing<String>|String)?
+
+  /// Limits the list of entities to entities that have a certain device class.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  device_class: (Listing<DeviceClasses>|DeviceClasses)?
+
+  /// Limits the list of entities to entities that have a certain supported feature.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  supported_features: (Listing<SupportedFeature>|SupportedFeature)?
+}
+
+class AssistPipelineSelector {
+  /// The assist pipeline selector shows all available assist pipelines (assistants) of which one can be
+  /// selected. https://www.home-assistant.io/docs/blueprint/selectors/#assist-pipeline-selector
+  assist_pipeline: `Record<string,never>`|Any
+}
+
+class AttributeSelector {
+  /// The attributes selector shows a list of state attributes from a provided entity of which one can be
+  /// selected. https://www.home-assistant.io/docs/blueprint/selectors/#attribute-selector
+  attribute: Attribute
+}
+
+/// The attributes selector shows a list of state attributes from a provided entity of which one can be
+/// selected. https://www.home-assistant.io/docs/blueprint/selectors/#attribute-selector
+class Attribute {
+  /// The entity ID of which an state attribute can be selected from.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#attribute-selector
+  entity_id: String(matches(Regex(#"^.*\..*$"#)))
+
+  /// List of attribute names to hide from the UI. Hidden attributes can still be provided manually.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#attribute-selector
+  hide_attributes: Listing<String>?
+}
+
+class BackupLocationSelector {
+  /// The backup location selector shows a list of places a backup could go, depending on what you have
+  /// configured in storage.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#backup-location-selector
+  backup_location: `Record<string,never>`|Any
+}
+
+class BooleanSelector {
+  /// The boolean selector shows a toggle that allows the user to turn on or off the selected option.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#boolean-selector
+  boolean: `Record<string,never>`|Any
+}
+
+class ColorRGBSelector {
+  /// The RGB color selector allows the user to select a color from a color picker from the user
+  /// interface, and returns the RGB color value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#rgb-color-selector
+  color_rgb: `Record<string,never>`|Any
+}
+
+class ColorTempSelector {
+  /// The color temperature selector allows you to select a color temperature from a gradient using a
+  /// slider. https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  color_temp: ColorTempAlternate0|Any
+}
+
+class ColorTempAlternate0 {
+  /// The chosen unit for the color temperature. This can be either `kelvin` or `mired`. `mired` is the
+  /// default for historical reasons.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  unit: ("kelvin"|"mired")?
+
+  /// The minimum color temperature in the chosen unit.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  min: Number?
+
+  /// The maximum color temperature in the chosen unit.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  max: Number?
+
+  /// The minimum color temperature in mireds (legacy).
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  min_mireds: Int(isPositive)?
+
+  /// The maximum color temperature in mireds (legacy).
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#color-temperature-selector
+  max_mireds: Int(isPositive)?
+}
+
+class ConditionSelector {
+  /// The condition selector allows the user to input one or more conditions..
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#condition-selector
+  condition: `Record<string,never>`|Any
+}
+
+class ConfigEntrySelector {
+  /// The config entry selector allows the user to select an integration configuration entry. The
+  /// selector returns the entry ID of the selected integration configuration entry.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#config-entry-selector
+  config_entry: ConfigEntryAlternate0|Any
+}
+
+class ConfigEntryAlternate0 {
+  /// Can be set to an integration domain. Limits the list of config entries provided by the set
+  /// integration domain. https://www.home-assistant.io/docs/blueprint/selectors/#config-entry-selector
+  integration: String(matches(Regex(#"^(?!.+__)(?!_)[\da-z_]+(?<!_)$"#)))?
+}
+
+class ConstantSelector {
+  /// The constant selector shows a toggle that allows the user to enable the selected option. This is
+  /// similar to the boolean selector, the difference is that the constant selector has no value when
+  /// it's not enabled. https://www.home-assistant.io/docs/blueprint/selectors/#constant-selector
+  constant: Constant
+}
+
+/// The constant selector shows a toggle that allows the user to enable the selected option. This is
+/// similar to the boolean selector, the difference is that the constant selector has no value when it's
+/// not enabled. https://www.home-assistant.io/docs/blueprint/selectors/#constant-selector
+class Constant {
+  /// The label that is shown in the UI for this constant.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#constant-selector
+  label: String?
+
+  /// Translation key for internationalization support.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#constant-selector
+  translation_key: String?
+
+  /// Value that is returned when this constant is enabled by the user
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#constant-selector
+  value: String|Number|Boolean
+}
+
+class ConversationAgentSelector {
+  /// The conversation agent selector allows picking a conversation agent.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#conversation-agent-selector
+  conversation_agent: ConversationAgentAlternate0|Any
+}
+
+class ConversationAgentAlternate0 {
+  /// Limits the list of conversation agents to those supporting the specified language.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#conversation-agent-selector
+  language: String?
+}
+
+class CountrySelector {
+  /// The country selector allows a user to pick a country from a list of countries.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#country-selector
+  country: CountryAlternate0|Any
+}
+
+class CountryAlternate0 {
+  /// A list of countries to pick from, this should be ISO 3166 country codes.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#country-selector
+  countries: Listing<String>?
+
+  /// Should the options be sorted by name, if set to true, the order of the provided countries is kept.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#country-selector
+  no_sort: Boolean?
+}
+
+class DateSelector {
+  /// The date selector shows a date input that allows the user to specify a date.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#date-selector
+  date: `Record<string,never>`|Any
+}
+
+class DateTimeSelector {
+  /// The date selector shows a date and time input that allows the user to specify a date with a
+  /// specific time. https://www.home-assistant.io/docs/blueprint/selectors/#date--time-selector
+  datetime: `Record<string,never>`|Any
+}
+
+class DeviceSelector {
+  /// The device selector shows a device finder that can pick a single device.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  device: DeviceAlternate0|Any
+}
+
+class DeviceAlternate0 {
+  /// When entity options are provided, the list of devices is filtered by devices that at least provide
+  /// one entity that matches the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  entity: (EntitySelectorFilter|Listing<EntitySelectorFilter>)?
+
+  /// When filter options are provided, the list of devices is filtered by devices that at least provide
+  /// one entity that matches the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  filter: (DeviceSelectorFilter|Listing<DeviceSelectorFilter>)?
+
+  /// You can use filter parameter to filter devices".
+  integration: Listing<Any>?
+
+  /// You can use filter parameter to filter devices".
+  manufacturer: Listing<Any>?
+
+  /// You can use filter parameter to filter devices".
+  model: Listing<Any>?
+
+  /// Allows selecting multiple devices. If set to `true`, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#device-selector
+  multiple: Boolean?
+}
+
+class DurationSelector {
+  /// The duration select allow the user to select a time duration. This can be helpful for, e.g., delays
+  /// or offsets. https://www.home-assistant.io/docs/blueprint/selectors/#duration-selector
+  duration: DurationAlternate0|Any
+}
+
+class DurationAlternate0 {
+  /// When true, the duration selector will allow selecting days.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#duration-selector
+  enable_day: Boolean?
+
+  /// When true, the duration selector will allow selecting milliseconds.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#duration-selector
+  enable_millisecond: Boolean?
+
+  /// Allow negative durations. Will default to False in HA Core 2025.6.0.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#duration-selector
+  allow_negative: Boolean?
+}
+
+class EntitySelector {
+  /// The entity selector shows an entity finder that can pick a single entity.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  entity: EntityAlternate0|Any
+}
+
+class EntityAlternate0 {
+  /// List of entity IDs to exclude from the selectable list.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  exclude_entities: Listing<String(matches(Regex(#"^.*\..*$"#)))>?
+
+  /// List of entity IDs to limit the selectable list to.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  include_entities: Listing<String(matches(Regex(#"^.*\..*$"#)))>?
+
+  /// You can use filter parameter to filter entities".
+  integration: Listing<Any>?
+
+  /// You can use filter parameter to filter entities".
+  domain: Listing<Any>?
+
+  /// You can use filter parameter to filter entities".
+  device_class: Listing<Any>?
+
+  /// When filter options are provided, the entities are limited by entities that at least match the
+  /// given conditions. https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  filter: (EntitySelectorFilter|Listing<EntitySelectorFilter>)?
+
+  /// Allows selecting multiple devices. If set to `true`, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#entity-selector
+  multiple: Boolean?
+}
+
+class FileSelector {
+  /// The file selector allows the user to select a file.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#file-selector
+  file: File
+}
+
+/// The file selector allows the user to select a file.
+/// https://www.home-assistant.io/docs/blueprint/selectors/#file-selector
+class File {
+  /// File type filter using HTML input accept attribute format.
+  /// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#file-selector
+  accept: String
+}
+
+class FloorSelector {
+  /// The icon selector shows an icon picker that allows the user to select an icon.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#floor-selector
+  floor: FloorAlternate0|Any
+}
+
+class FloorAlternate0 {
+  /// When device options are provided, the list of floors is filtered by floors that have at least one
+  /// device matching the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#floor-selector
+  device: (DeviceSelectorFilter|Listing<DeviceSelectorFilter>)?
+
+  /// When entity options are provided, the list only includes floors that at least have one entity that
+  /// matches the given conditions.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#floor-selector
+  entity: (EntitySelectorFilter|Listing<EntitySelectorFilter>)?
+
+  /// Allows selecting multiple floors. If set to true, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#floor-selector
+  multiple: Boolean?
+}
+
+class IconSelector {
+  /// The icon selector shows an icon picker that allows the user to select an icon.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#icon-selector
+  icon: IconAlternate0|Any
+}
+
+class IconAlternate0 {
+  /// Placeholder icon to show, when no icon is selected.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#icon-selector
+  placeholder: String?
+}
+
+class LabelSelector {
+  /// The label selector shows a label finder that can pick labels.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#label-selector
+  label: LabelAlternate0|Any
+}
+
+class LabelAlternate0 {
+  /// Allows selecting multiple labels. If set to true, the resulting value of this selector will be a
+  /// list instead of a single string value
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#label-selector
+  multiple: Boolean?
+}
+
+class LanguageSelector {
+  /// The language selector allows a user to pick a language from a list of languages.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#language-selector
+  language: LanguageAlternate0|Any
+}
+
+class LanguageAlternate0 {
+  /// A list of languages to pick from, this should be RFC 5646 languages codes.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#language-selector
+  languages: Listing<String>?
+
+  /// Should the name of the languages be shown in the language of the user, or in the language itself.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#language-selector
+  native_name: Boolean?
+
+  /// Should the options be sorted by name, if set to true, the order of the provided languages is kept.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#language-selector
+  no_sort: Boolean?
+}
+
+class LocationSelector {
+  /// The icon selector shows an icon picker that allows the user to select an icon.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#location-selector
+  location: LocationAlternate0|Any
+}
+
+class LocationAlternate0 {
+  /// An optional icon to show on the map.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#location-selector
+  icon: String?
+
+  /// Allow selecting the radius of the location. If enabled, the radius will be returned in meters.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#location-selector
+  radius: Boolean?
+}
+
+class MediaSelector {
+  /// The media selector is a powerful selector that allows a user to easily select media to play on a
+  /// media device. https://www.home-assistant.io/docs/blueprint/selectors/#media-selector
+  media: `Record<string,never>`|Any
+}
+
+class NumberSelector {
+  /// The number selector shows either a number input or a slider input, that allows the user to specify
+  /// a numeric value. https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  number: Number
+}
+
+/// The number selector shows either a number input or a slider input, that allows the user to specify a
+/// numeric value. https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+class Number {
+  /// The maximum user-settable number value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  max: Number
+
+  /// The minimal user-settable number value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  min: Number
+
+  /// This can be either box or slider mode.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  mode: ("box"|"slider")?
+
+  /// The step value of the number value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  step: Number?
+
+  /// Unit of measurement in which the number value is expressed in.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#number-selector
+  unit_of_measurement: String?
+}
+
+class ObjectSelector {
+  /// The object selector can be used to input arbitrary data in YAML form. This is useful for e.g. lists
+  /// and dictionaries like service data.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#object-selector
+  object: `Record<string,never>`|Any
+}
+
+class QRCodeSelector {
+  /// The QR code selector shows a QR code.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#qr-code-selector
+  qr_code: QrCode
+}
+
+/// The QR code selector shows a QR code.
+/// https://www.home-assistant.io/docs/blueprint/selectors/#qr-code-selector
+class QrCode {
+  /// The data that should be represented in the QR code.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#qr-code-selector
+  data: Any
+
+  /// The scale factor to use, this will make the QR code bigger or smaller.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#qr-code-selector
+  scale: Int(isPositive)?
+
+  /// The error correction level of the QR code, with a higher error correction level the QR code can be
+  /// scanned even when some pieces are missing.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#qr-code-selector
+  error_correction_level: ("high"|"low"|"medium"|"quartile")?
+}
+
+class SelectSelector {
+  /// The select selector shows a list of available options from which the user can choose.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  select: Select
+}
+
+/// The select selector shows a list of available options from which the user can choose.
+/// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+class Select {
+  /// Allows the user to enter and select a custom value (or multiple custom values in addition to the
+  /// listed options if `multiple` is set to true).
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  custom_value: Boolean?
+
+  /// This can be either `list` or `dropdown` mode. when not specificied, small lists (5 items or less),
+  /// are displayed as radio buttons. When more items are added, a dropdown list is used.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  mode: ("dropdown"|"list")?
+
+  /// Allows selecting multiple options. If set to `true`, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  multiple: Boolean?
+
+  /// Display options in alphabetical order.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  sort: Boolean?
+
+  /// Translation key for internationalization support.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  translation_key: String?
+
+  /// List of options that the user can choose from.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  options: Listing<String>|Listing<OptionsAlternate1>
+}
+
+class OptionsAlternate1 {
+  /// The description to show in the UI for this item.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  label: String
+
+  /// The value to return when this label is selected.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#select-selector
+  value: String
+}
+
+class StateSelector {
+  /// The state selector shows a list of states for a provided entity of which one can be selected.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#state-selector
+  state: State
+}
+
+/// The state selector shows a list of states for a provided entity of which one can be selected.
+/// https://www.home-assistant.io/docs/blueprint/selectors/#state-selector
+class State {
+  /// The entity ID of which a state can be selected from.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#state-selector
+  entity_id: String(matches(Regex(#"^.*\..*$"#)))
+}
+
+class TargetSelector {
+  /// The target selector is a rather special selector, allowing the user to select targeted entities,
+  /// devices or areas for service calls.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#target-selector
+  target: TargetAlternate0|Any
+}
+
+class TargetAlternate0 {
+  /// When device options are provided, the targets are limited by devices that at least match the given
+  /// conditions. https://www.home-assistant.io/docs/blueprint/selectors/#target-selector
+  device: (DeviceSelectorFilter|Listing<DeviceSelectorFilter>)?
+
+  /// When entity options are provided, the targets are limited by entities that at least match the given
+  /// conditions. https://www.home-assistant.io/docs/blueprint/selectors/#target-selector
+  entity: (EntitySelectorFilter|Listing<EntitySelectorFilter>)?
+}
+
+class TemplateSelector {
+  /// The template can be used for allowing the user to input a Jinja2 template.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#template-selector
+  template: `Record<string,never>`|Any
+}
+
+class TextSelector {
+  /// The text selector can be used to input a text string.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  text: TextAlternate0|Any
+}
+
+class TextAlternate0 {
+  /// Set to true to display the input as a multi-line text box on the user interface.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  multiline: Boolean?
+
+  /// Allows adding list of text strings. If set to true, the resulting value of this selector will be a
+  /// list instead of a single string value.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  multiple: Boolean?
+
+  /// Allows adding a prefix to the input field.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  prefix: String?
+
+  /// Allows adding a suffix to the input field.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  suffix: String?
+
+  /// The type of input. This is a browser hint, which can improve the client side validation of the
+  /// input. The value isn't validated by the backend.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  type: ("color"|"date"|"datetime-local"|"email"|"month"|"number"|"password"|"search"|"tel"|"text"|"time"|"url"|"week")?
+
+  /// Guides the browser on the type of information which should automatically fill the field. This
+  /// supplies the HTML autocomplete attribute.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#text-selector
+  autocomplete: String?
+}
+
+class ThemeSelector {
+  /// The theme selector allows for selecting a theme from the available themes installed in Home
+  /// Assistant. https://www.home-assistant.io/docs/blueprint/selectors/#theme-selector
+  theme: ThemeAlternate0|Any
+}
+
+class ThemeAlternate0 {
+  /// Includes Home Assistant default theme in the list.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#theme-selector
+  include_default: Boolean?
+}
+
+class TimeSelector {
+  /// The time selector shows a time input that allows the user to specify a time of the day.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#time-selector
+  time: `Record<string,never>`|Any
+}
+
+class TriggerSelector {
+  /// The triggers selector allows the user to input one or more triggers. On the user interface, the
+  /// trigger part of the automation editor is shown.
+  /// https://www.home-assistant.io/docs/blueprint/selectors/#trigger-selector
+  trigger: `Record<string,never>`|Any
+}
+
+class BlueprintInputSectionSchema {
+  /// A name for the section. If omitted the key of the section is used.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#name
+  name: String?
+
+  /// An optional description of this section, which will be displayed at the top of the section. The
+  /// description can include Markdown. https://www.home-assistant.io/docs/blueprint/schema/#description
+  description: String?
+
+  /// An icon to display next to the name of the section.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#icon
+  icon: String?
+
+  /// If true, the section will be collapsed by default. Useful for optional or less important inputs.
+  /// All collapsed inputs must also have a defined default before they can be hidden.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#collapsed
+  collapsed: Boolean?
+
+  /// A dictionary of defined user inputs within this section.
+  /// https://www.home-assistant.io/docs/blueprint/schema/#input
+  input: Mapping<String, BlueprintInputSchema>
+}
+
+class AndCondition {
+  /// Alias for the and condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#and-condition
+  condition: "and"
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#and-condition
+  conditions: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class AndShorthandCondition {
+  /// Alias for the and condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#and-condition
+  and: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class DeviceCondition {
+  /// Alias for the device condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Device conditions encompass a set of properties that are defined by an integration. In contrast to
+  /// state conditions, device conditions are tied to a device and not necessarily an entity. To use a
+  /// device trigger, set up an automation through the browser frontend.
+  condition: "device"?
+
+  /// The internal ID of the device to preform a conditional test on.
+  device_id: String
+
+  /// The integration domain this device condition is provided by.
+  domain: String
+}
+
+class NotCondition {
+  /// Alias for the not condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are not
+  /// valid. https://www.home-assistant.io/docs/scripts/conditions/#not-condition
+  condition: "not"
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are not
+  /// valid. https://www.home-assistant.io/docs/scripts/conditions/#not-condition
+  conditions: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class NotShorthandCondition {
+  /// Alias for the not condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if all embedded conditions are not
+  /// valid. https://www.home-assistant.io/docs/scripts/conditions/#not-condition
+  not: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class NumericStateCondition {
+  /// Alias for the numeric state condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// This type of condition attempts to parse the state of the specified entity as a number, and
+  /// triggers if the value matches the thresholds.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  condition: "numeric_state"
+
+  /// Passes if the numeric state of the given entity (or entities) is above the given threshold.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  above: (
+    String(matches(Regex(#"^input_number\..*$"#)))
+    |String(matches(Regex(#"^number\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |Number)?
+
+  /// Passes if the numeric state of the given entity (or entities) is below the given threshold.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  below: (
+    String(matches(Regex(#"^input_number\..*$"#)))
+    |String(matches(Regex(#"^number\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |Number)?
+
+  /// The entity ID or list of entity IDs to test the numeric state against.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  entity_id: Entities
+
+  /// An optional value template to use as the numeric state value.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  value_template: String?
+
+  /// Use the value of a specific entity attribute to test against, instead of the entity state.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#numeric-state-condition
+  attribute: String?
+}
+
+class OrCondition {
+  /// Alias for the or condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if any embedded condition is valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#or-condition
+  condition: "or"
+
+  /// Test multiple conditions in one condition statement. Passes if any embedded condition is valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#or-condition
+  conditions: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class OrShorthandCondition {
+  /// Alias for the or condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Test multiple conditions in one condition statement. Passes if any embedded condition is valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#or-condition
+  or: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+}
+
+class ShorthandCondition {
+  /// Alias for the and condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The template condition has a shorthand notation that can be used to make your scripts and
+  /// automations shorter.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#template-condition-shorthand-notation
+  condition: 
+    String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+}
+
+class StateCondition {
+  /// Alias for the state condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// Tests if an entity (or entities) is in a specified state.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  condition: "state"
+
+  /// The entity ID or list of entity IDs to test the state against.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  entity_id: Entities
+
+  /// The state the entity (or entities) must have for this condition to pass.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  state: Listing<StateState>|StateState
+
+  /// The amount of time the entity (or entities) state must be held until this condition passes.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  `for`: (TimePeriodMap|String|Number)?
+
+  /// Use the value of a specific entity attribute to test against, instead of the entity state.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  attribute: String?
+
+  /// How to match in case this condition has multiple entity listed: "all" all entities have to match
+  /// the state, "any" if any of the entities match the state.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#state-condition
+  match: ("all"|"any")?
+}
+
+class TimePeriodMap {
+  /// Number of days. This must be a number.
+  days: (String|Number)?
+
+  /// Number of hours. This must be a number.
+  hours: (String|Number)?
+
+  /// Number of milliseconds. This must be a number.
+  milliseconds: (String|Number)?
+
+  /// Number of minutes. This must be a number.
+  minutes: (String|Number)?
+
+  /// Number of seconds. This must be a number.
+  seconds: (String|Number)?
+}
+
+class SunCondition {
+  /// Alias for the sun condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The sun state can be used to test if the sun has set or risen.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#sun-condition
+  condition: "sun"
+
+  /// Conditionally test if is currently is before sunrise or sunset. Note that if only before key is
+  /// used, the condition will be true from midnight until sunrise/sunset.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#sun-condition
+  before: ("sunrise"|"sunset")?
+
+  /// Optional offset from the sunrise or sunset. For example "-00:45:00" will conditionally test 45
+  /// minutes before sunrise or sunset.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#sun-condition
+  before_offset: (TimePeriodMap|String|Number)?
+
+  /// Conditionally test if is currently is after sunrise or sunset. Note that if only after key is used,
+  /// the condition will be true from sunset/sunrise until midnight.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#sun-condition
+  after: ("sunrise"|"sunset")?
+
+  /// Optional offset from the sunrise or sunset. For example "-00:45:00" will conditionally test 45
+  /// minutes before sunrise or sunset.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#sun-condition
+  after_offset: (TimePeriodMap|String|Number)?
+}
+
+class TemplateCondition {
+  /// Alias for the template condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The template condition tests if the given template renders a value equal to true. This is achieved
+  /// by having the template result in a true boolean expression or by having the template render ‘true’.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#template-condition
+  condition: "template"
+
+  /// The template to render for this condition. The condition will pass if the result is true.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#template-condition
+  value_template: String?
+}
+
+class TimeCondition {
+  /// Alias for the time condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The time condition can test if it is after a specified time, before a specified time or if it is a
+  /// certain day of the week. https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+  condition: "time"
+
+  /// Conditionally check if it is currently before a certain time of day. Note that if only before key
+  /// is used, the condition will be true from midnight until the specified time.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+  before: (
+    String(matches(Regex(#"^input_datetime\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$"))))?
+
+  /// Conditionally check if it is currently after a certain time of day. Note that if only after key is
+  /// used, the condition will be true from the specified time until midnight.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+  after: (
+    String(matches(Regex(#"^input_datetime\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$"))))?
+
+  /// Days of the week this condition can be valid.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+  weekday: (Listing<Weekday>|Weekday)?
+}
+
+class TriggerCondition {
+  /// Alias for the trigger condition.
+  alias: String?
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The trigger condition can test if this automation was triggered by a specific trigger.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#trigger-condition
+  condition: "trigger"
+
+  /// The ID (or IDs) of the triggers to test against if they have triggered this automation.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#trigger-condition
+  id: Listing<String>|Listing<Number>|String|Number
+}
+
+class ZoneCondition {
+  /// Alias for the zone condition.
+  alias: String?
+
+  condition: "zone"
+
+  /// Every individual condition can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/conditions/#disabling-a-condition
+  enabled: Boolean?
+
+  /// The entity ID(s) of the device tracker(s).
+  /// https://www.home-assistant.io/docs/scripts/conditions/#zone-condition
+  entity_id: 
+    String(matches(Regex(#"^device_tracker\..*$"#)))
+    |Listing<String(matches(Regex(#"^device_tracker\..*$"#)))>
+    |String(matches(Regex(#"^person\..*$"#)))
+    |Listing<String(matches(Regex(#"^person\..*$"#)))>
+
+  /// The zone(s) conditionally check against for the given device tracker(s).
+  /// https://www.home-assistant.io/docs/scripts/conditions/#zone-condition
+  zone: ZoneEntities
+}
+
+class ChooseAction {
+  /// Alias for the choose action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// This action allows you to select a sequence of other actions from a list of sequences.
+  /// https://www.home-assistant.io/docs/scripts/#choose-a-group-of-actions
+  choose: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |ChooseActionItem
+    |Listing<ChooseActionItem>
+
+  /// An optional default sequence can be included which will be run if none of the sequences from the
+  /// list are run. https://www.home-assistant.io/docs/scripts/#choose-a-group-of-actions
+  default: (
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>)?
+}
+
+class ChooseActionItem {
+  /// Alias for this choose item.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Only preform the sequence of actions if this condition/these conditions match.
+  /// https://www.home-assistant.io/docs/scripts/#choose-a-group-of-actions
+  conditions: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+
+  /// The sequence of actions to be performed if the condition(s) match.
+  /// https://www.home-assistant.io/docs/scripts/#choose-a-group-of-actions
+  sequence: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>
+}
+
+class DelayAction {
+  /// Alias for the delay action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// Delays are useful for temporarily suspending your script and start it at a later moment. The time
+  /// period to delay the executing of the current action sequence for.
+  /// https://www.home-assistant.io/docs/scripts/#delay
+  delay: TimePeriod
+}
+
+class DeviceAction {
+  /// Alias for the device action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The internal ID of the device to execute an action on. Device actions encompass a set of events
+  /// that are defined by an integration. In contrast to service calls, device actions are tied to a
+  /// device and not necessarily an entity. To use a device action, set up an automation through the
+  /// browser frontend.
+  device_id: String
+
+  /// The integration domain this device trigger is provided by.
+  domain: String
+}
+
+class EventAction {
+  /// Alias for the Event action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The event name to fire. This action allows you to fire an event. Events can be used for many
+  /// things. It could trigger an automation or indicate to another integration that something is
+  /// happening. https://www.home-assistant.io/docs/scripts/#fire-an-event
+  event: String
+
+  /// The event data to pass along. https://www.home-assistant.io/docs/scripts/#fire-an-event
+  event_data: Data?
+
+  /// You can use templates directly in the event_data parameter, replace "event_data_template" with just
+  /// "event_data". https://www.home-assistant.io/docs/scripts/#fire-an-event
+  event_data_template: Listing<Any>?
+}
+
+class IfAction {
+  /// Alias for the if action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// This action allows you to select a sequence of other actions from a list of sequences.
+  /// https://www.home-assistant.io/docs/scripts/#if-then
+  `if`: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>
+
+  /// An optional default sequence can be included which will be run if none of the sequences from the
+  /// list are run. https://www.home-assistant.io/docs/scripts/#if-then
+  then: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>
+
+  /// An optional default sequence can be included which will be run if none of the sequences from the
+  /// list are run. https://www.home-assistant.io/docs/scripts/#if-then
+  `else`: (
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>)?
+}
+
+class ParallelAction {
+  /// Alias for the parallel action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The sequence of actions to run in parallel.
+  /// https://www.home-assistant.io/docs/scripts/#parallelizing-actions
+  parallel: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |Listing<
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>>
+}
+
+class RepeatAction {
+  /// Alias for the repeat action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// This action allows you to repeat a sequence of other actions.
+  /// https://www.home-assistant.io/docs/scripts/#repeat-a-group-of-actions
+  repeat: Repeat
+}
+
+/// This action allows you to repeat a sequence of other actions.
+/// https://www.home-assistant.io/docs/scripts/#repeat-a-group-of-actions
+class Repeat {
+  /// This form accepts a count value. The value may be specified by a template, in which case the
+  /// template is rendered when the repeat step is reached.
+  /// https://www.home-assistant.io/docs/scripts/#counted-repeat
+  count: (String|Number)?
+
+  /// This repeat form accepts a list of items to iterate over. The list of items can be a pre-defined
+  /// list, or a list created by a template. https://www.home-assistant.io/docs/scripts/#for-each
+  for_each: (Listing<String>|Listing<Data>|String)?
+
+  /// The sequence of actions to be repeatedly performed in the script.
+  /// https://www.home-assistant.io/integrations/script/#sequence
+  sequence: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>
+
+  /// This form accepts a list of conditions that are evaluated after each time the sequence is run.
+  /// Therefore the sequence will always run at least once. The sequence will be executed until the
+  /// condition(s) evaluate to true. https://www.home-assistant.io/docs/scripts/#repeat-until
+  until: (
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>)?
+
+  /// This form accepts a list of conditions that are evaluated before each time the sequence is run. The
+  /// sequence will be repeated as long as the condition(s) evaluate to true.
+  /// https://www.home-assistant.io/docs/scripts/#while-loop
+  while: (
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |Listing<Condition>)?
+}
+
+class SceneAction {
+  /// Alias for the scene action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// Activate a scene. https://www.home-assistant.io/docs/scripts/#activate-a-scene
+  scene: String(matches(Regex(#"^scene\..*$"#)))
+
+  /// Additional data for merely for use with the frontend. Has no functional effect.
+  metadata: Any?
+}
+
+class ServiceAction {
+  /// Service call alias. https://www.home-assistant.io/docs/scripts/service-calls/
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// Legacy syntax, use "action" instead.
+  service: Listing<Any>?
+
+  /// The most important action is to call an action.
+  /// https://www.home-assistant.io/docs/scripts/service-calls/
+  action: String?
+
+  /// You can use templates directly in the service parameter, replace "service_template" with just
+  /// "service".
+  /// https://www.home-assistant.io/docs/scripts/service-calls/#use-templates-to-decide-which-service-to-call
+  service_template: Listing<Any>?
+
+  /// Specify other parameters beside the entity to target. For example, the light turn on service allows
+  /// specifying the brightness.
+  /// https://www.home-assistant.io/docs/scripts/service-calls/#passing-data-to-the-service-call
+  data: (Data|String)?
+
+  /// You can use templates directly in the data parameter, replace "data_template" with just "data".
+  /// https://www.home-assistant.io/docs/scripts/service-calls/#use-templates-to-determine-the-attributes
+  data_template: Listing<Any>?
+
+  /// The entity (or entities) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  entity_id: (Listing<String(matches(Regex(#"^.*\..*$"#)))>|String?)?
+
+  /// Defines the target (area(s), device(s) and entitie(s)) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  target: (TargetTargetAlternate0|String)?
+
+  /// Additional data for merely for use with the frontend. Has no functional effect.
+  metadata: Any?
+
+  /// Add a response_variable to pass a variable of key/value pairs back to an automation or script.
+  /// https://www.home-assistant.io/docs/scripts/service-calls/#use-templates-to-handle-response-data
+  response_variable: String?
+}
+
+class TargetTargetAlternate0 {
+  /// The entity (or entities) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  entity_id: (Listing<String(matches(Regex(#"^.*\..*$"#)))>|String?)?
+
+  /// The device (or devices) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  device_id: (Listing<String>|String)?
+
+  /// The area (or areas) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  area_id: (Listing<String>|String)?
+
+  /// The floor (or floors) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  floor_id: (Listing<String>|String)?
+
+  /// The labels (or labels) to execute this service call on.
+  /// https://www.home-assistant.io/docs/scripts/service-calls
+  label_id: (Listing<String>|String)?
+}
+
+class SequenceAction {
+  /// Alias for the sequence action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The sequence of actions to run in serial
+  /// https://www.home-assistant.io/docs/scripts/#grouping-actions
+  sequence: 
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex(#"^\{\{.*$"#)))
+    |String(matches(Regex(#"^\{%.*$"#)))
+    |String(matches(Regex(#"^\{#.*$"#)))
+    |AndCondition
+    |AndShorthandCondition
+    |DeviceCondition
+    |NotCondition
+    |NotShorthandCondition
+    |NumericStateCondition
+    |OrCondition
+    |OrShorthandCondition
+    |ShorthandCondition
+    |StateCondition
+    |SunCondition
+    |TemplateCondition
+    |TimeCondition
+    |TriggerCondition
+    |ZoneCondition
+    |ChooseAction
+    |DelayAction
+    |DeviceAction
+    |EventAction
+    |IfAction
+    |ParallelAction
+    |RepeatAction
+    |SceneAction
+    |ServiceAction
+    |SequenceAction
+    |StopAction
+    |WaitForTriggerAction
+    |WaitTemplateAction
+    |VariablesAction
+    |Listing<Action>
+}
+
+class StopAction {
+  /// Stop call alias. https://www.home-assistant.io/docs/scripts/#stopping-a-script-sequence
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Stop a automation or script sequence. Provide a text with a reason for stopping.
+  /// https://www.home-assistant.io/docs/scripts/#stopping-a-script-sequence
+  stop: String?
+
+  /// Set to true, if we are stopping with an error / because of unexpected behavior
+  /// https://www.home-assistant.io/docs/scripts/#stopping-a-script-sequence
+  error: Boolean?
+
+  /// Add a response_variable to pass a variable of key/value pairs back to an automation or script
+  /// https://www.home-assistant.io/docs/scripts/#stopping-a-script-sequence
+  response_variable: String?
+}
+
+class WaitForTriggerAction {
+  /// Alias for the wait for trigger action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The trigger to wait for, before continuing execution of the script.
+  /// https://www.home-assistant.io/docs/scripts/#wait-for-trigger
+  wait_for_trigger: (
+    String(matches(Regex("^!include_dir_list .*$")))
+    |String(matches(Regex("^!include_dir_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_list\t.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list .*$")))
+    |String(matches(Regex("^!include_dir_merge_list\r.*$")))
+    |String(matches(Regex("""
+  ^!include_dir_merge_list
+  .*$
+  """)))
+    |String(matches(Regex("^!include_dir_merge_list\t.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |String(matches(Regex("^!include_dir_merge_list.*$")))
+    |WebOSTvTrigger
+    |CalendarTrigger
+    |ConversationTrigger
+    |DeviceTrigger
+    |EventTrigger
+    |GeolocationTrigger
+    |HomeAssistantTrigger
+    |MqttTrigger
+    |NumericStateTrigger
+    |PersistentNotificationTrigger
+    |StateTrigger
+    |SunTrigger
+    |TagTrigger
+    |TemplateTrigger
+    |TimeTrigger
+    |TimePatternTrigger
+    |WebhookTrigger
+    |ZoneTrigger
+    |Listing<Trigger>)?
+
+  /// Set a timeout after which the script will continue its execution if the trigger has not occurred.
+  /// https://www.home-assistant.io/docs/scripts/#wait-for-trigger
+  timeout: (TimePeriodMap|String|Number)?
+
+  /// Continue the execute of the action sequence on time out or not.
+  /// https://www.home-assistant.io/docs/scripts/#wait-for-trigger
+  continue_on_timeout: Boolean?
+}
+
+class WebOSTvTrigger {
+  /// Trigger fires when WebOS integration attempts to turn on the TV.
+  /// https://www.home-assistant.io/integrations/webostv/#configuration
+  platform: "webostv.turn_on"
+
+  /// The entity ID of the TV that wants to get turned on.
+  /// https://www.home-assistant.io/integrations/webostv/#configuration
+  entity_id: String?
+}
+
+class CalendarTrigger {
+  /// Alias for the calendar trigger.
+  alias: String?
+
+  /// Calendar trigger fires when a Calendar event starts or ends.
+  /// https://www.home-assistant.io/docs/automation/trigger/#calendar-trigger
+  trigger: "calendar"?
+
+  /// Legacy syntax, use "trigger: calendar" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// Trigger on start or end of the calendar event.
+  /// https://www.home-assistant.io/docs/automation/trigger/#calendar-trigger
+  event: ("end"|"start")?
+
+  /// The entity ID to monitor the calendar events for.
+  /// https://www.home-assistant.io/docs/automation/trigger/#calendar-trigger
+  entity_id: String(matches(Regex(#"^calendar\..*$"#)))
+
+  /// Optional time offset to fire a set time before or after event start/end.
+  /// https://www.home-assistant.io/docs/automation/trigger/#calendar-trigger
+  offset: (TimePeriodMap|String|Number)?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#calendar-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class ConversationTrigger {
+  /// Alias for the conversation pattern trigger.
+  alias: String?
+
+  /// With the sentence trigger, you can match a sentence from a voice assistant.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sentence-trigger
+  trigger: "conversation"?
+
+  /// Legacy syntax, use "trigger: conversation" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// A sentence or a list of sentences for this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sentence-trigger
+  command: Listing<String>|String
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sentence-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class DeviceTrigger {
+  /// Alias for the device trigger.
+  alias: String?
+
+  /// Device triggers encompass a set of events that are defined by an integration. In contrast to state
+  /// triggers, device triggers are tied to a device and not necessarily an entity. To use a device
+  /// trigger, set up an automation through the browser frontend.
+  /// https://www.home-assistant.io/docs/automation/trigger/#device-triggers
+  trigger: "device"?
+
+  /// Legacy syntax, use "trigger: device" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// The internal ID of the device to trigger on
+  /// https://www.home-assistant.io/docs/automation/trigger/#device-triggers
+  device_id: String
+
+  /// The integration domain this device trigger is provided by.
+  /// https://www.home-assistant.io/docs/automation/trigger/#device-triggers
+  domain: String
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#device-triggers
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class EventTrigger {
+  /// Alias for the event trigger.
+  alias: String?
+
+  /// Fires when an event is being received. Events are the raw building blocks of Home Assistant. You
+  /// can match events on just the event name or also require specific event data to be present.
+  /// https://www.home-assistant.io/docs/automation/trigger/#event-trigger
+  trigger: "event"?
+
+  /// Legacy syntax, use "trigger: event" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// Additional event context that has to match before triggering.
+  /// https://www.home-assistant.io/docs/automation/trigger/#event-trigger
+  context: Data?
+
+  /// Additional event data that has to match before triggering.
+  /// https://www.home-assistant.io/docs/automation/trigger/#event-trigger
+  event_data: Data?
+
+  /// The name of the event to listen for.
+  /// https://www.home-assistant.io/docs/automation/trigger/#event-trigger
+  event_type: Listing<String>|Listing<EventType>|String
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#event-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class GeolocationTrigger {
+  /// Alias for the geolocation trigger.
+  alias: String?
+
+  /// Geolocation trigger fires when an entity is appearing in or disappearing from a zone.
+  /// https://www.home-assistant.io/docs/automation/trigger/#geolocation-trigger
+  trigger: "geo_location"?
+
+  /// Legacy syntax, use "trigger: geo_location" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// Trigger when the entity leaves or enters the zone defined.
+  /// https://www.home-assistant.io/docs/automation/trigger/#geolocation-trigger
+  event: "enter"|"leave"
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#geolocation-trigger
+  id: String?
+
+  /// The source is directly linked to one of the Geolocation platforms.
+  /// https://www.home-assistant.io/docs/automation/trigger/#geolocation-trigger
+  source: String
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+
+  /// The zone to trigger on when a entity is appearing in or disappearing from.
+  /// https://www.home-assistant.io/docs/automation/trigger/#geolocation-trigger
+  zone: String(matches(Regex(#"^zone\..*$"#)))
+}
+
+class HomeAssistantTrigger {
+  /// Alias for the home assistant trigger.
+  alias: String?
+
+  /// This trigger fires when Home Assistant has started up or going to shut down.
+  /// https://www.home-assistant.io/docs/automation/trigger/#home-assistant-trigger
+  trigger: "homeassistant"?
+
+  /// Legacy syntax, use "trigger: homeassistant" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// Specified the event to listen to: Either the Home Assistant start or shutdown event.
+  /// https://www.home-assistant.io/docs/automation/trigger/#home-assistant-trigger
+  event: "shutdown"|"start"
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#home-assistant-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class MqttTrigger {
+  /// Alias for the mqtt trigger.
+  alias: String?
+
+  /// Fires when a specific message is received on given MQTT topic
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  trigger: "mqtt"?
+
+  /// Legacy syntax, use "trigger: mqtt" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// The default payload encoding is ‘utf-8’. For images and other byte payloads use encoding: '' to
+  /// disable payload decoding completely.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  encoding: String?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  id: String?
+
+  /// The payload to match on before triggering.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  payload: String?
+
+  /// The matching QoS level of the state topic. Default is 0.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  qos: Int(isBetween(0, 2))?
+
+  /// The MQTT topic to subscribe and listen to.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  topic: String
+
+  /// Value template allows, for example, picking out a JSON key from the incoming MQTT message.
+  /// https://www.home-assistant.io/docs/automation/trigger/#mqtt-trigger
+  value_template: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class NumericStateTrigger {
+  /// Alias for the numeric state trigger.
+  alias: String?
+
+  /// Fires when numeric value of an entity’s state crosses a given threshold.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  trigger: "numeric_state"?
+
+  /// Legacy syntax, use "trigger: numeric_state" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// The entity ID or list of entity IDs to monitor the numeric state for.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  entity_id: Entities
+
+  /// Fire this trigger if the numeric state of the monitored entity (or entities) is changing from above
+  /// to below the given threshold.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  below: (
+    String(matches(Regex(#"^input_number\..*$"#)))
+    |String(matches(Regex(#"^number\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |Number)?
+
+  /// Fire this trigger if the numeric state of the monitored entity (or entities) is changing from below
+  /// to above the given threshold.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  above: (
+    String(matches(Regex(#"^input_number\..*$"#)))
+    |String(matches(Regex(#"^number\..*$"#)))
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |Number)?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  id: String?
+
+  /// An optional value template to use as the numeric state value.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  value_template: String?
+
+  /// The amount of time this threshold must be held until this trigger fires.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  `for`: (TimePeriodMap|String|Number)?
+
+  /// Use the value of a specific entity attribute to trigger on, instead of the entity state.
+  /// https://www.home-assistant.io/docs/automation/trigger/#numeric-state-trigger
+  attribute: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class PersistentNotificationTrigger {
+  /// Alias for the persistent notification trigger.
+  alias: String?
+
+  /// Persistent notification triggers are fired when a persistent_notification is added or removed that
+  /// matches the configuration options.
+  /// https://www.home-assistant.io/docs/automation/trigger/#persistent-notification-trigger
+  trigger: "persistent_notification"?
+
+  /// Legacy syntax, use "trigger: persistent_notification" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#persistent-notification-trigger
+  id: String?
+
+  /// Define the type of persistent notification to trigger on.
+  /// https://www.home-assistant.io/docs/automation/trigger/#persistent-notification-trigger
+  update_type: Listing<PersistentNotificationUpdateType>?
+
+  /// The notification ID to trigger on.
+  /// https://www.home-assistant.io/docs/automation/trigger/#persistent-notification-trigger
+  notification_id: String?
+}
+
+class StateTrigger {
+  /// Alias for the state trigger.
+  alias: String?
+
+  /// This trigger fires when the state of any of given entities changes.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  trigger: "state"?
+
+  /// Legacy syntax, use "trigger: state" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// The entity ID or list of entity IDs to monitor the state for.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  entity_id: Entities
+
+  /// The amount of time the entity or entities state must be held until this trigger fires.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  `for`: (TimePeriodMap|String|Number)?
+
+  /// The state the entity or entities had before changing to its new state.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  from: Any?
+
+  /// The state the entity or entities NOT had before changing to its new state.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  not_from: Any?
+
+  /// The state the entity or entities have changed to.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  to: Any?
+
+  /// The state the entity or entities did NOT changed to.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  not_to: Any?
+
+  /// Use the value of a specific entity attribute to trigger on, instead of the entity state.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  attribute: String?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#state-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class SunTrigger {
+  /// Alias for the sun trigger.
+  alias: String?
+
+  /// This trigger fires when the sun is setting or rising.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sun-trigger
+  trigger: "sun"?
+
+  /// Legacy syntax, use "trigger: device" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// The event to fire on, either on sunset or sunrise.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sun-trigger
+  event: "sunrise"|"sunset"
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#sun-trigger
+  id: String?
+
+  /// Optional offset from the sunrise or sunset. For example "-00:45:00" will trigger 45 minutes before
+  /// sunrise or sunset. https://www.home-assistant.io/docs/automation/trigger/#sun-trigger
+  offset: (TimePeriodMap|String|Number)?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class TagTrigger {
+  /// Alias for the tag trigger.
+  alias: String?
+
+  /// This trigger fired when a tag is scanned.
+  /// https://www.home-assistant.io/docs/automation/trigger#tag-trigger
+  trigger: "tag"?
+
+  /// Legacy syntax, use "trigger: tag" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger#tag-trigger
+  id: String?
+
+  /// Identifier of the tag. Use this to decide what to do.
+  /// https://www.home-assistant.io/docs/automation/trigger#tag-trigger
+  tag_id: Listing<String>|String
+
+  /// Device registry identifier of the device that scanned the tag. Use this to decide where to do it.
+  /// https://www.home-assistant.io/docs/automation/trigger#tag-trigger
+  device_id: (Listing<String>|String)?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class TemplateTrigger {
+  /// Alias for the template trigger.
+  alias: String?
+
+  /// Template triggers work by evaluating a template on every state change for all of the recognized
+  /// entities. The trigger will fire if the state change caused the template to render ‘true’.
+  /// https://www.home-assistant.io/docs/automation/trigger/#template-trigger
+  trigger: "template"?
+
+  /// Legacy syntax, use "trigger: template" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#template-trigger
+  id: String?
+
+  /// The template to render for this trigger. The event will fire is the result is true.
+  /// https://www.home-assistant.io/docs/automation/trigger/#template-trigger
+  value_template: String
+
+  /// The amount of time the template must be resulting in true until this trigger fires.
+  /// https://www.home-assistant.io/docs/automation/trigger/#template-trigger
+  `for`: (TimePeriodMap|String|Number)?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class TimeTrigger {
+  /// Alias for the time trigger.
+  alias: String?
+
+  /// The time trigger is configured to fire once at a specific point in time each day.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-trigger
+  trigger: "time"?
+
+  /// Legacy syntax, use "trigger: time" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// Time of day to trigger on, in HH:MM:SS, 24 hours clock format. For example: "13:30:00" Also accepts
+  /// input_datetime entities (e.g., input_datetime.start_of_day)
+  at: 
+    String(matches(Regex(#"^input_datetime\..*$"#)))
+    |Listing<String(matches(Regex(#"^input_datetime\..*$"#)))>
+    |String(matches(Regex(#"^sensor\..*$"#)))
+    |Listing<String(matches(Regex(#"^sensor\..*$"#)))>
+    |String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$")))
+    |Listing<String(matches(Regex("^[0-9]*:[0-9]*:[0-9]*$")))>
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-trigger
+  id: String?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class TimePatternTrigger {
+  /// Alias for the time pattern trigger.
+  alias: String?
+
+  /// With the time pattern trigger, you can match if the hour, minute or second of the current time
+  /// matches a specific value.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-pattern-trigger
+  trigger: "time_pattern"?
+
+  /// Legacy syntax, use "trigger: time_pattern" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-pattern-trigger
+  id: String?
+
+  /// The hour or hours to trigger on. You can prefix the value with a / to match whenever the value is
+  /// divisible by that number. You can specify * to match any value.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-pattern-trigger
+  hours: String?
+
+  /// The minute or minutes to trigger on. You can prefix the value with a / to match whenever the value
+  /// is divisible by that number. You can specify * to match any value.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-pattern-trigger
+  minutes: (String|Number)?
+
+  /// The second or seconds to trigger on. You can prefix the value with a / to match whenever the value
+  /// is divisible by that number. You can specify * to match any value.
+  /// https://www.home-assistant.io/docs/automation/trigger/#time-pattern-trigger
+  seconds: (String|Number)?
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class WebhookTrigger {
+  /// Alias for the webhook trigger.
+  alias: String?
+
+  /// Webhook trigger fires when a web request is made to the webhook endpoint.
+  /// https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger
+  trigger: "webhook"?
+
+  /// Legacy syntax, use "trigger: webhook" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger
+  id: String?
+
+  /// The webhook ID to use, defines the endpoint: /api/webhook/<webhook_id>
+  /// https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger
+  webhook_id: String
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+
+  /// Controls to only allow local requests to trigger the webhook.
+  /// https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger
+  local_only: Boolean?
+
+  /// Controls to only allow requests with a valid API password to trigger the webhook.
+  /// https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger
+  allowed_methods: Listing<AllowedMethods>
+}
+
+class ZoneTrigger {
+  /// Alias for the zone trigger.
+  alias: String?
+
+  /// Zone trigger fires when an entity is entering or leaving the zone. For zone automation to work, you
+  /// need to have setup a device tracker platform that supports reporting GPS coordinates.
+  /// https://www.home-assistant.io/docs/automation/trigger/#zone-trigger
+  trigger: "zone"?
+
+  /// Legacy syntax, use "trigger: zone" instead.
+  platform: Listing<Any>?
+
+  /// Every individual trigger in an automation can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/automation/trigger/#disabling-a-trigger
+  enabled: Boolean?
+
+  /// An personal identifier for this trigger, that is passed into the trigger variables when the
+  /// automation triggers using this trigger.
+  /// https://www.home-assistant.io/docs/automation/trigger/#zone-trigger
+  id: String?
+
+  /// The entity ID(s) of the device tracker(s) to monitor on a given zone.
+  /// https://www.home-assistant.io/docs/automation/trigger/#zone-trigger
+  entity_id: 
+    String(matches(Regex(#"^device_tracker\..*$"#)))
+    |Listing<String(matches(Regex(#"^device_tracker\..*$"#)))>
+    |String(matches(Regex(#"^person\..*$"#)))
+    |Listing<String(matches(Regex(#"^person\..*$"#)))>
+
+  /// The zone(s) to monitor for the given device tracker(s).
+  /// https://www.home-assistant.io/docs/automation/trigger/#zone-trigger
+  zone: ZoneEntities
+
+  /// Trigger when the entity leaves or enters the zone(s) defined.
+  /// https://www.home-assistant.io/docs/automation/trigger/#zone-trigger
+  event: "enter"|"leave"
+
+  /// This allows you to define variables that will be set when the trigger fires. These can be used in
+  /// the automation actions or conditions. Templates can be used in these variables.
+  /// https://www.home-assistant.io/docs/automation/trigger#trigger-variables
+  variables: Data?
+}
+
+class WaitTemplateAction {
+  /// Alias for the wait action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// Wait until some things are complete. https://www.home-assistant.io/docs/scripts/#wait
+  wait_template: String
+
+  /// Set a timeout after which the script will continue its execution if the condition is not satisfied.
+  /// https://www.home-assistant.io/docs/scripts/#wait
+  timeout: (TimePeriodMap|String|Number)?
+
+  /// Continue the execute of the action sequence on time out or not.
+  /// https://www.home-assistant.io/docs/scripts/#wait
+  continue_on_timeout: Boolean?
+}
+
+class VariablesAction {
+  /// Alias for the variables action.
+  alias: String?
+
+  /// Every individual action can be disabled, without removing it.
+  /// https://www.home-assistant.io/docs/scripts/#disabling-an-action
+  enabled: Boolean?
+
+  /// Set it to true if you’d like to continue the action sequence, regardless of whether that action
+  /// encounters an error. https://www.home-assistant.io/docs/scripts/#continuing-on-error
+  continue_on_error: Boolean?
+
+  /// The variable command allows you to set/override variables that will be accessible by templates in
+  /// actions after it. https://www.home-assistant.io/docs/scripts/#variables
+  variables: Data
+}
+
+class Field {
+  /// Marks if this script parameter is an advanced usage parameter.
+  /// https://www.home-assistant.io/integrations/script/#advanced
+  advanced: Boolean?
+
+  /// The default value of this parameter field.
+  /// https://www.home-assistant.io/integrations/script/#default
+  default: Any?
+
+  /// Description of this script parameter.
+  /// https://www.home-assistant.io/integrations/script/#description
+  description: String?
+
+  /// An example value for this script paramter.
+  /// https://www.home-assistant.io/integrations/script/#example
+  example: String?
+
+  /// The name of the script parameter field. https://www.home-assistant.io/integrations/script/#name
+  name: String?
+
+  /// Marks if this script parameter is an advanced usage parameter.
+  /// https://www.home-assistant.io/integrations/script/#advanced
+  required: Boolean?
+
+  /// The UI selector to use for this script parameter field.
+  /// https://www.home-assistant.io/integrations/script/#selector
+  selector: (
+    ActionSelector
+    |AddonSelector
+    |AreaSelector
+    |AssistPipelineSelector
+    |AttributeSelector
+    |BackupLocationSelector
+    |BooleanSelector
+    |ColorRGBSelector
+    |ColorTempSelector
+    |ConditionSelector
+    |ConfigEntrySelector
+    |ConstantSelector
+    |ConversationAgentSelector
+    |CountrySelector
+    |DateSelector
+    |DateTimeSelector
+    |DeviceSelector
+    |DurationSelector
+    |EntitySelector
+    |FileSelector
+    |FloorSelector
+    |IconSelector
+    |LabelSelector
+    |LanguageSelector
+    |LocationSelector
+    |MediaSelector
+    |NumberSelector
+    |ObjectSelector
+    |QRCodeSelector
+    |SelectSelector
+    |StateSelector
+    |TargetSelector
+    |TemplateSelector
+    |TextSelector
+    |ThemeSelector
+    |TimeSelector
+    |TriggerSelector)?
+}
+
+typealias `Record<string,never>` = Mapping<String, Any>
+
+typealias DeviceClasses =
+  "apparent_power"
+  |"aqi"
+  |"area"
+  |"atmospheric_pressure"
+  |"awning"
+  |"battery"
+  |"battery_charging"
+  |"blind"
+  |"blood_glucose_concentration"
+  |"carbon_dioxide"
+  |"carbon_monoxide"
+  |"cold"
+  |"conductivity"
+  |"connectivity"
+  |"current"
+  |"curtain"
+  |"damper"
+  |"data_rate"
+  |"data_size"
+  |"date"
+  |"distance"
+  |"door"
+  |"duration"
+  |"energy"
+  |"energy_distance"
+  |"energy_storage"
+  |"enum"
+  |"frequency"
+  |"garage"
+  |"garage_door"
+  |"gas"
+  |"gate"
+  |"heat"
+  |"humidity"
+  |"illuminance"
+  |"irradiance"
+  |"light"
+  |"lock"
+  |"moisture"
+  |"monetary"
+  |"motion"
+  |"moving"
+  |"nitrogen_dioxide"
+  |"nitrogen_monoxide"
+  |"nitrous_oxide"
+  |"occupancy"
+  |"opening"
+  |"outlet"
+  |"ozone"
+  |"ph"
+  |"plug"
+  |"pm1"
+  |"pm10"
+  |"pm25"
+  |"power"
+  |"power_factor"
+  |"precipitation"
+  |"precipitation_intensity"
+  |"presence"
+  |"pressure"
+  |"problem"
+  |"reactive_power"
+  |"receiver"
+  |"running"
+  |"safety"
+  |"shade"
+  |"shutter"
+  |"signal_strength"
+  |"smoke"
+  |"sound"
+  |"sound_pressure"
+  |"speaker"
+  |"speed"
+  |"sulphur_dioxide"
+  |"switch"
+  |"tamper"
+  |"temperature"
+  |"timestamp"
+  |"tv"
+  |"update"
+  |"vibration"
+  |"volatile_organic_compounds"
+  |"volatile_organic_compounds_parts"
+  |"voltage"
+  |"volume"
+  |"volume_flow_rate"
+  |"volume_storage"
+  |"water"
+  |"weight"
+  |"wind_speed"
+  |"window"
+
+typealias SupportedFeature =
+  "camera.AlarmControlPanelEntityFeature.ARM_AWAY"
+  |"camera.AlarmControlPanelEntityFeature.ARM_CUSTOM_BYPASS"
+  |"camera.AlarmControlPanelEntityFeature.ARM_HOME"
+  |"camera.AlarmControlPanelEntityFeature.ARM_NIGHT"
+  |"camera.AlarmControlPanelEntityFeature.ARM_VACATION"
+  |"camera.AlarmControlPanelEntityFeature.TRIGGER"
+  |"camera.CameraEntityFeature.ON_OFF"
+  |"camera.CameraEntityFeature.STREAM"
+  |"climate.ClimateEntityFeature.AUX_HEAT"
+  |"climate.ClimateEntityFeature.FAN_MODE"
+  |"climate.ClimateEntityFeature.PRESET_MODE"
+  |"climate.ClimateEntityFeature.SWING_HORIZONTAL_MODE"
+  |"climate.ClimateEntityFeature.SWING_MODE"
+  |"climate.ClimateEntityFeature.TARGET_HUMIDITY"
+  |"climate.ClimateEntityFeature.TARGET_TEMPERATURE"
+  |"climate.ClimateEntityFeature.TARGET_TEMPERATURE_RANGE"
+  |"climate.ClimateEntityFeature.TURN_OFF"
+  |"climate.ClimateEntityFeature.TURN_ON"
+  |"cover.CoverEntityFeature.CLOSE"
+  |"cover.CoverEntityFeature.CLOSE_TILT"
+  |"cover.CoverEntityFeature.OPEN"
+  |"cover.CoverEntityFeature.OPEN_TILT"
+  |"cover.CoverEntityFeature.SET_POSITION"
+  |"cover.CoverEntityFeature.SET_TILT_POSITION"
+  |"cover.CoverEntityFeature.STOP"
+  |"cover.CoverEntityFeature.STOP_TILT"
+  |"fan.FanEntityFeature.DIRECTION"
+  |"fan.FanEntityFeature.OSCILLATE"
+  |"fan.FanEntityFeature.PRESET_MODE"
+  |"fan.FanEntityFeature.SET_SPEED"
+  |"fan.FanEntityFeature.TURN_OFF"
+  |"fan.FanEntityFeature.TURN_ON"
+  |"light.LightEntityFeature.EFFECT"
+  |"light.LightEntityFeature.FLASH"
+  |"light.LightEntityFeature.TRANSITION"
+  |"lock.LockEntityFeature.OPEN"
+  |"update.UpdateEntityFeature.BACKUP"
+  |"update.UpdateEntityFeature.INSTALL"
+  |"update.UpdateEntityFeature.PROGRESS"
+  |"update.UpdateEntityFeature.RELEASE_NOTES"
+  |"update.UpdateEntityFeature.SPECIFIC_VERSION"
+  |"vacuum.VacuumEntityFeature.BATTERY"
+  |"vacuum.VacuumEntityFeature.CLEAN_SPOT"
+  |"vacuum.VacuumEntityFeature.FAN_SPEED"
+  |"vacuum.VacuumEntityFeature.LOCATE"
+  |"vacuum.VacuumEntityFeature.MAP"
+  |"vacuum.VacuumEntityFeature.PAUSE"
+  |"vacuum.VacuumEntityFeature.RETURN_HOME"
+  |"vacuum.VacuumEntityFeature.SEND_COMMAND"
+  |"vacuum.VacuumEntityFeature.START"
+  |"vacuum.VacuumEntityFeature.STATE"
+  |"vacuum.VacuumEntityFeature.STATUS"
+  |"vacuum.VacuumEntityFeature.STOP"
+  |"vacuum.VacuumEntityFeature.TURN_OFF"
+  |"vacuum.VacuumEntityFeature.TURN_ON"
+  |"weather.WeatherEntityFeature.FORECAST_DAILY"
+  |"weather.WeatherEntityFeature.FORECAST_HOURLY"
+  |"weather.WeatherEntityFeature.FORECAST_TWICE_DAILY"
+
+typealias Entities = String(matches(Regex(#"^.*\..*$"#)))|Listing<String(matches(Regex(#"^.*\..*$"#)))>
+
+typealias StateState = String|Number|Boolean
+
+typealias Weekday = "fri"|"mon"|"sat"|"sun"|"thu"|"tue"|"wed"
+
+typealias ZoneEntities = String(matches(Regex(#"^zone\..*$"#)))|Listing<String(matches(Regex(#"^zone\..*$"#)))>
+
+typealias Condition =
+  String(matches(Regex(#"^\{\{.*$"#)))
+  |String(matches(Regex(#"^\{%.*$"#)))
+  |String(matches(Regex(#"^\{#.*$"#)))
+  |AndCondition
+  |AndShorthandCondition
+  |DeviceCondition
+  |NotCondition
+  |NotShorthandCondition
+  |NumericStateCondition
+  |OrCondition
+  |OrShorthandCondition
+  |ShorthandCondition
+  |StateCondition
+  |SunCondition
+  |TemplateCondition
+  |TimeCondition
+  |TriggerCondition
+  |ZoneCondition
+
+typealias TimePeriod = TimePeriodMap|String|Number
+
+typealias Data = Mapping<String, Any>
+
+typealias EventType =
+  "automation_reloaded"
+  |"automation_triggered"
+  |"call_service"
+  |"component_loaded"
+  |"deconz_event"
+  |"homeassistant_started"
+  |"homeassistant_stop"
+  |"logbook_entry"
+  |"platform_discovered"
+  |"scene_reloaded"
+  |"service_executed"
+  |"service_registered"
+  |"service_removed"
+  |"state_changed"
+  |"tag_scanned"
+  |"themes_updates"
+  |"time_changed"
+  |"user_added"
+  |"user_removed"
+  |"zha_event"
+
+typealias PersistentNotificationUpdateType = "added"|"removed"|"updated"
+
+typealias AllowedMethods = "GET"|"HEAD"|"POST"|"PUT"
+
+typealias Trigger =
+  WebOSTvTrigger
+  |CalendarTrigger
+  |ConversationTrigger
+  |DeviceTrigger
+  |EventTrigger
+  |GeolocationTrigger
+  |HomeAssistantTrigger
+  |MqttTrigger
+  |NumericStateTrigger
+  |PersistentNotificationTrigger
+  |StateTrigger
+  |SunTrigger
+  |TagTrigger
+  |TemplateTrigger
+  |TimeTrigger
+  |TimePatternTrigger
+  |WebhookTrigger
+  |ZoneTrigger
+
+typealias Action =
+  String(matches(Regex(#"^\{\{.*$"#)))
+  |String(matches(Regex(#"^\{%.*$"#)))
+  |String(matches(Regex(#"^\{#.*$"#)))
+  |AndCondition
+  |AndShorthandCondition
+  |DeviceCondition
+  |NotCondition
+  |NotShorthandCondition
+  |NumericStateCondition
+  |OrCondition
+  |OrShorthandCondition
+  |ShorthandCondition
+  |StateCondition
+  |SunCondition
+  |TemplateCondition
+  |TimeCondition
+  |TriggerCondition
+  |ZoneCondition
+  |ChooseAction
+  |DelayAction
+  |DeviceAction
+  |EventAction
+  |IfAction
+  |ParallelAction
+  |RepeatAction
+  |SceneAction
+  |ServiceAction
+  |SequenceAction
+  |StopAction
+  |WaitForTriggerAction
+  |WaitTemplateAction
+  |VariablesAction

@@ -1,0 +1,42 @@
+/// This module was generated from JSON Schema from
+/// <file:///Users/jeffsandberg/Developer/homeassistant-pkl/priv/schemas/json/integration-input_select.json>.
+///
+/// WARN: unable to determine module-level properties on the root schema.
+module IntegrationInputSelect
+
+class Item {
+  /// The icon that shows in the frontend. https://www.home-assistant.io/integrations/input_select/#icon
+  icon: String?
+
+  /// Initial value when Home Assistant starts.
+  /// https://www.home-assistant.io/integrations/input_select/#initial
+  initial: String?
+
+  /// Name of the input select. https://www.home-assistant.io/integrations/input_select/#name
+  name: String?
+
+  /// List of options to choose from. https://www.home-assistant.io/integrations/input_select#options
+  options: Listing<String>
+}
+
+typealias Schema = Mapping<String, 
+  String(matches(Regex("^!include_dir_named .*$")))
+  |String(matches(Regex("^!include_dir_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_named\t.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named .*$")))
+  |String(matches(Regex("^!include_dir_merge_named\r.*$")))
+  |String(matches(Regex("""
+  ^!include_dir_merge_named
+  .*$
+  """)))
+  |String(matches(Regex("^!include_dir_merge_named\t.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |String(matches(Regex("^!include_dir_merge_named.*$")))
+  |Item
+  |Any>
