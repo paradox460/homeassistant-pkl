@@ -9,7 +9,7 @@ They are automatically generated from the [HomeAssistant VSCode plugin](https://
 In a Pkl file, you can use them like this:
 
 ```pkl
-import "package://pkg.pkl-lang.org/github.com/paradox460/homeassistant-pkl@2025.7.21/type/IntegrationTemplate.pkl"
+import "package://pkg.pkl-lang.org/github.com/paradox460/homeassistant-pkl@2025.7.21#/type/IntegrationTemplate.pkl"
 
 binary_sensor = new Listing {
   new {
