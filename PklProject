@@ -1,0 +1,13 @@
+amends "pkl:Project"
+
+package {
+  name = "HomeAssistant-Pkl"
+  version = "2025.7.21"
+  description = "Home Assistant YAML config types for Pkl"
+  baseUri = "package://pkg.pkl-lang.org/github.com/paradox460/homeassistant-pkl"
+  packageZipUrl = "https://github.com/paradox460/homeassistant-pkl/releases/download/v\(version)/homeassistant-pkl@\(version).zip"
+  authors {
+    "Jeff Sandberg <ha-pkl@m.pdx.su>"
+  }
+  license = "MIT"
+}
