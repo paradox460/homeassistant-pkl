@@ -1,0 +1,19 @@
+#!/usr/bin/env fish
+#MISE description="Creates and pushes a github release"
+
+set pkg_version (pkl eval -x package.version $MISE_PROJECT_ROOT/PklProject)
+
+pkl project package; or exit 1
+
+# Check if current head has a tag
+if git describe --tags --exact-match >/dev/null 2>&1
+  echo "Current head is tagged, skipping tag creation..."
+else
+
+  echo "Creating tag"
+  git tag -asf v$pkg_version -m "Release version $pkg_version"
+end
+
+git push --follow-tags origin
+gh release create v$pkg_version --generate-notes .out/HomeAssistant-Pkl@$pkg_version/*
+rm -rf .out
